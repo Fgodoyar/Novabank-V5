@@ -28,13 +28,13 @@
   </component>
   <component name="JavacSettings">
     <option name="ADDITIONAL_OPTIONS_OVERRIDE">
-      <module name="account-service" options="-parameters" />
-      <module name="api-gateway" options="-parameters" />
-      <module name="auth-server" options="-parameters" />
-      <module name="config-server" options="-parameters" />
+      <module name="account-service" options="" />
+      <module name="api-gateway" options="" />
+      <module name="auth-server" options="" />
+      <module name="config-server" options="" />
       <module name="customer-service" options="-parameters" />
-      <module name="eureka-server" options="-parameters" />
-      <module name="operation-service" options="-parameters" />
+      <module name="eureka-server" options="" />
+      <module name="operation-service" options="" />
     </option>
   </component>
 </project>
