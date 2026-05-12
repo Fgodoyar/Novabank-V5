@@ -1,10 +1,10 @@
 package com.novabank.customer.domain;
 
-import jakarta.persistence.*;
 import lombok.*;
-
+import org.springframework.data.annotation.Id;
+import org.springframework.data.relational.core.mapping.Column;
+import org.springframework.data.relational.core.mapping.Table;
 import java.time.LocalDateTime;
-import java.util.Set;
 
 @Getter
 @Setter
@@ -13,38 +13,28 @@ import java.util.Set;
 @AllArgsConstructor
 @ToString(exclude = "accounts")
 @EqualsAndHashCode(onlyExplicitlyIncluded = true)
-@Entity
-@Table(name = "Customers")
+@Table(name = "customers")
 public class Customer {
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "customer_id")
+    @Column("customer_id")
     private Long customerId;
 
-    @Column(name = "customer_name")
+    @Column("customer_name")
     private String customerName;
 
-    @Column(name = "last_name")
+    @Column("last_name")
     private String lastName;
 
-    @Column
+    @Column("dni")
     private String dni;
 
-    @Column
+    @Column("email")
     private String email;
 
-    @Column(name = "phone_number")
+    @Column("phone_number")
     private String phoneNumber;
 
-    @Column(name = "creation_date")
+    @Column("creation_date")
     private LocalDateTime creationDate;
-
-    /*@OneToMany(mappedBy = "customer", cascade = CascadeType.ALL)
-    public Set<Account> accounts;*/
-
-    @PrePersist
-    public void prePersist() {
-        this.creationDate = LocalDateTime.now();
-    }
 
 }

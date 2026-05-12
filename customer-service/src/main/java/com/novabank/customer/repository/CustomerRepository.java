@@ -1,16 +1,16 @@
 package com.novabank.customer.repository;
 
 import com.novabank.customer.domain.Customer;
-import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.repository.reactive.ReactiveCrudRepository;
 import org.springframework.stereotype.Repository;
-
-import java.util.Optional;
+import reactor.core.publisher.Mono;
 
 @Repository
-public interface CustomerRepository extends JpaRepository<Customer, Long>{
+public interface CustomerRepository extends ReactiveCrudRepository<Customer,Long> {
 
-    Optional<Customer> findByDni(String dni);
+    Mono<Customer> findByDni(String dni);
+    Mono<Customer> findByEmail(String email);
     boolean existsByDni(String dni);
     boolean existsByEmail(String email);
-    boolean existsByPhoneNumber(String phone_number);
+    boolean existsByPhoneNumber(String phoneNumber);
 }
