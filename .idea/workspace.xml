@@ -5,41 +5,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="54ba782e-3a95-4627-938d-1c69b056fe8e" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/compiler.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/compiler.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/encodings.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/encodings.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/vcs.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/account-service/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/account-service/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/api-gateway/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/api-gateway/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/auth-server/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/auth-server/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/config-server/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/config-server/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/config-server/target/classes/application.yml" beforeDir="false" afterPath="$PROJECT_DIR$/config-server/target/classes/application.yml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/customer-service/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/customer-service/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/customer-service/src/main/java/com/novabank/customer/CustomerServiceApplication.java" beforeDir="false" afterPath="$PROJECT_DIR$/customer-service/src/main/java/com/novabank/customer/CustomerServiceApplication.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/customer-service/src/main/java/com/novabank/customer/config/SecurityConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/customer-service/src/main/java/com/novabank/customer/config/SecurityConfig.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/customer-service/src/main/java/com/novabank/customer/controller/CustomerController.java" beforeDir="false" afterPath="$PROJECT_DIR$/customer-service/src/main/java/com/novabank/customer/controller/CustomerController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/customer-service/src/main/java/com/novabank/customer/domain/Customer.java" beforeDir="false" afterPath="$PROJECT_DIR$/customer-service/src/main/java/com/novabank/customer/domain/Customer.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/customer-service/src/main/java/com/novabank/customer/dto/CreateCustomerRequest.java" beforeDir="false" afterPath="$PROJECT_DIR$/customer-service/src/main/java/com/novabank/customer/dto/CreateCustomerRequest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/customer-service/src/main/java/com/novabank/customer/dto/CustomerDTO.java" beforeDir="false" afterPath="$PROJECT_DIR$/customer-service/src/main/java/com/novabank/customer/dto/CustomerDTO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/customer-service/src/main/java/com/novabank/customer/exception/CustomerNotFoundException.java" beforeDir="false" afterPath="$PROJECT_DIR$/customer-service/src/main/java/com/novabank/customer/exception/CustomerNotFoundException.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/customer-service/src/main/java/com/novabank/customer/exception/DuplicateDniException.java" beforeDir="false" afterPath="$PROJECT_DIR$/customer-service/src/main/java/com/novabank/customer/exception/DuplicateDniException.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/customer-service/src/main/java/com/novabank/customer/exception/DuplicateEmailException.java" beforeDir="false" afterPath="$PROJECT_DIR$/customer-service/src/main/java/com/novabank/customer/exception/DuplicateEmailException.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/customer-service/src/main/java/com/novabank/customer/exception/DuplicatePhoneNumberException.java" beforeDir="false" afterPath="$PROJECT_DIR$/customer-service/src/main/java/com/novabank/customer/exception/DuplicatePhoneNumberException.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/customer-service/src/main/java/com/novabank/customer/exception/GlobalExceptionHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/customer-service/src/main/java/com/novabank/customer/exception/GlobalExceptionHandler.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/customer-service/src/main/java/com/novabank/customer/mapper/CustomerMapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/customer-service/src/main/java/com/novabank/customer/mapper/CustomerMapper.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/customer-service/src/main/java/com/novabank/customer/repository/CustomerRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/customer-service/src/main/java/com/novabank/customer/repository/CustomerRepository.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/customer-service/src/main/java/com/novabank/customer/service/CustomerService.java" beforeDir="false" afterPath="$PROJECT_DIR$/customer-service/src/main/java/com/novabank/customer/service/CustomerService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/customer-service/src/main/java/com/novabank/customer/service/CustomerServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/customer-service/src/main/java/com/novabank/customer/service/CustomerServiceImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/customer-service/src/main/resources/application.yml" beforeDir="false" afterPath="$PROJECT_DIR$/customer-service/src/main/resources/application.yml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/eureka-server/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/eureka-server/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/eureka-server/src/main/java/com/novabank/eureka/EurekaServerApplication.java" beforeDir="false" afterPath="$PROJECT_DIR$/eureka-server/src/main/java/com/novabank/eureka/EurekaServerApplication.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/eureka-server/target/maven-archiver/pom.properties" beforeDir="false" afterPath="$PROJECT_DIR$/eureka-server/target/maven-archiver/pom.properties" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/eureka-server/target/maven-status/maven-compiler-plugin/compile/default-compile/createdFiles.lst" beforeDir="false" afterPath="$PROJECT_DIR$/eureka-server/target/maven-status/maven-compiler-plugin/compile/default-compile/createdFiles.lst" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/eureka-server/target/maven-status/maven-compiler-plugin/compile/default-compile/inputFiles.lst" beforeDir="false" afterPath="$PROJECT_DIR$/eureka-server/target/maven-status/maven-compiler-plugin/compile/default-compile/inputFiles.lst" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/operation-service/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/operation-service/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -49,8 +15,8 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
-        <option value="Class" />
         <option value="Exception" />
+        <option value="Class" />
       </list>
     </option>
   </component>
