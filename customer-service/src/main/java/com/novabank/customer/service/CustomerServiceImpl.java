@@ -41,13 +41,13 @@ public class CustomerServiceImpl implements CustomerService {
     @Override
     public Mono<CustomerDTO> createCustomer(CreateCustomerRequest request) {
 
-        if (customerRepository.existsByDni(request.dni()))
+        if (customerRepository.existsByDni(request.dni()).block())
             throw new DuplicateDniException("Ya existe un cliente con este DNI: " + request.dni());
 
-        if (customerRepository.existsByEmail(request.email()))
+        if (customerRepository.existsByEmail(request.email()).block())
             throw new DuplicateEmailException("Ya existe un cliente con este email: " + request.email());
 
-        if (customerRepository.existsByPhoneNumber(request.phoneNumber()))
+        if (customerRepository.existsByPhoneNumber(request.phoneNumber()).block())
             throw new DuplicatePhoneNumberException("Ya existe un cliente con este número de teléfono: " + request.phoneNumber());
 
         return customerRepository.findByDni(request.dni())

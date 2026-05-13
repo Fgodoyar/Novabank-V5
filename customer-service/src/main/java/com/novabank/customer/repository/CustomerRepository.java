@@ -10,7 +10,7 @@ public interface CustomerRepository extends ReactiveCrudRepository<Customer,Long
 
     Mono<Customer> findByDni(String dni);
     Mono<Customer> findByEmail(String email);
-    boolean existsByDni(String dni);
-    boolean existsByEmail(String email);
-    boolean existsByPhoneNumber(String phoneNumber);
+    Mono<Boolean> existsByDni(String dni);
+    Mono<Boolean> existsByEmail(String email);
+    Mono<Boolean> existsByPhoneNumber(String phoneNumber);
 }

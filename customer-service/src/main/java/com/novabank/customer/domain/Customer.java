@@ -1,10 +1,10 @@
 package com.novabank.customer.domain;
 
 import lombok.*;
+import org.springframework.data.annotation.CreatedDate;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.relational.core.mapping.Column;
 import org.springframework.data.relational.core.mapping.Table;
-
 import java.time.LocalDateTime;
 
 @Getter
@@ -35,6 +35,7 @@ public class Customer {
     @Column("phone_number")
     private String phoneNumber;
 
+    @CreatedDate
     @Column("creation_date")
     private LocalDateTime creationDate;
 
