@@ -1,6 +1,5 @@
 package com.novabank.account;
 
-import com.novabank.account.config.SecurityConfig;
 import com.novabank.account.controller.AccountController;
 import com.novabank.account.dto.AccountDTO;
 import com.novabank.account.dto.CreateAccountRequest;

@@ -46,6 +46,9 @@ public class AccountServiceImpl implements AccountService {
                         return Mono.error(new IllegalArgumentException(
                                 "El cliente ya tiene una cuenta registrada"));
                     }
+                    Account account = accountMapper.toEntity(request);
+                    account.setAccountNumber(generateAccountNumber());
+                    account.setBalance(BigDecimal.ZERO);
                     return accountRepository.save(accountMapper.toEntity(request));
                 })
                 .map(accountMapper::toDTO);

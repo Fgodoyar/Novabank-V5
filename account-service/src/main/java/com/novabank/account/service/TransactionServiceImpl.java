@@ -57,7 +57,7 @@ public class TransactionServiceImpl implements TransactionService {
     @Override
     public Flux<TransactionDTO> findByRangeBetweenDate(Long accountId, LocalDateTime startDate, LocalDateTime endDate) {
         if (startDate.isAfter(endDate)) {
-            throw new IllegalArgumentException("La fecha de inicio debe ser anterior a la fecha de fin.");
+            return Flux.error(new IllegalArgumentException("La fecha de inicio debe ser anterior a la fecha de fin."));
         }
 
         return accountRepository.findByAccountId(accountId)
