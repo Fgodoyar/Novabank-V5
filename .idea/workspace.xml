@@ -5,13 +5,12 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="54ba782e-3a95-4627-938d-1c69b056fe8e" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/sqldialects.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/sqldialects.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/operation-service/src/main/java/com/novabank/operation/customer/AccountServiceClient.java" beforeDir="false" afterPath="$PROJECT_DIR$/operation-service/src/main/java/com/novabank/operation/customer/AccountServiceClient.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/operation-service/src/main/java/com/novabank/operation/customer/CustomerServiceClient.java" beforeDir="false" afterPath="$PROJECT_DIR$/operation-service/src/main/java/com/novabank/operation/customer/CustomerServiceClient.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/operation-service/src/main/java/com/novabank/operation/dto/CreateTransferRequest.java" beforeDir="false" afterPath="$PROJECT_DIR$/operation-service/src/main/java/com/novabank/operation/dto/CreateTransferRequest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/operation-service/src/main/java/com/novabank/operation/exception/GlobalExceptionHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/operation-service/src/main/java/com/novabank/operation/exception/GlobalExceptionHandler.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/operation-service/src/main/java/com/novabank/operation/service/OperationService.java" beforeDir="false" afterPath="$PROJECT_DIR$/operation-service/src/main/java/com/novabank/operation/service/OperationService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/operation-service/src/main/java/com/novabank/operation/service/OperationServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/operation-service/src/main/java/com/novabank/operation/service/OperationServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/account-service/src/main/java/com/novabank/account/repository/AccountRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/account-service/src/main/java/com/novabank/account/repository/AccountRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/account-service/src/main/java/com/novabank/account/service/AccountServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/account-service/src/main/java/com/novabank/account/service/AccountServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/auth-server/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/auth-server/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/operation-service/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/operation-service/pom.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -21,8 +20,9 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
-        <option value="Class" />
         <option value="Exception" />
+        <option value="Interface" />
+        <option value="Class" />
       </list>
     </option>
   </component>
@@ -51,16 +51,18 @@
   </component>
   <component name="PropertiesComponent"><![CDATA[{
   "keyToString": {
+    "Maven.operation-service [test].executor": "Run",
     "ModuleVcsDetector.initialDetectionPerformed": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "RunOnceActivity.git.unshallow": "true",
-    "git-widget-placeholder": "3-operation-reactive",
+    "git-widget-placeholder": "4-auth-reactive",
     "kotlin-language-version-configured": "true",
-    "last_opened_file_path": "C:/Users/frang/IdeaProjects/Novabank-V5/novabank-reactive/operation-service"
+    "last_opened_file_path": "C:/Users/frang/IdeaProjects/Novabank-V5/novabank-reactive/auth-server"
   }
 }]]></component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\frang\IdeaProjects\Novabank-V5\novabank-reactive\auth-server" />
       <recent name="C:\Users\frang\IdeaProjects\Novabank-V5\novabank-reactive\operation-service" />
       <recent name="C:\Users\frang\IdeaProjects\Novabank-V5\novabank-reactive\account-service" />
     </key>
