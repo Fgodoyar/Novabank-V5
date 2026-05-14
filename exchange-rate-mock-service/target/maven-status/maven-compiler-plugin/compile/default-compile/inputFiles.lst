@@ -1,0 +1,8 @@
+C:\Users\frang\IdeaProjects\Novabank-V5\novabank-reactive\exchange-rate-mock-service\src\main\java\com\novabank\exchange\controller\ExchangeRateMockController.java
+C:\Users\frang\IdeaProjects\Novabank-V5\novabank-reactive\exchange-rate-mock-service\src\main\java\com\novabank\exchange\dto\ExchangeRateResponse.java
+C:\Users\frang\IdeaProjects\Novabank-V5\novabank-reactive\exchange-rate-mock-service\src\main\java\com\novabank\exchange\exception\ErrorResponse.java
+C:\Users\frang\IdeaProjects\Novabank-V5\novabank-reactive\exchange-rate-mock-service\src\main\java\com\novabank\exchange\exception\GlobalExceptionHandler.java
+C:\Users\frang\IdeaProjects\Novabank-V5\novabank-reactive\exchange-rate-mock-service\src\main\java\com\novabank\exchange\exception\UnsupportedCurrencyException.java
+C:\Users\frang\IdeaProjects\Novabank-V5\novabank-reactive\exchange-rate-mock-service\src\main\java\com\novabank\exchange\ExchangeRateMockServiceApplication.java
+C:\Users\frang\IdeaProjects\Novabank-V5\novabank-reactive\exchange-rate-mock-service\src\main\java\com\novabank\exchange\service\ExchangeRateMockService.java
+C:\Users\frang\IdeaProjects\Novabank-V5\novabank-reactive\exchange-rate-mock-service\src\main\java\com\novabank\exchange\service\ExchangeRateMockServiceImpl.java

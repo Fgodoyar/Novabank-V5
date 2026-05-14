@@ -1,0 +1,9 @@
+com\novabank\exchange\dto\ExchangeRateResponse.class
+com\novabank\exchange\service\ExchangeRateMockServiceImpl.class
+com\novabank\exchange\exception\UnsupportedCurrencyException.class
+com\novabank\exchange\service\ExchangeRateMockService.class
+com\novabank\exchange\dto\ExchangeRateResponse$ExchangeRateResponseBuilder.class
+com\novabank\exchange\exception\ErrorResponse.class
+com\novabank\exchange\controller\ExchangeRateMockController.class
+com\novabank\exchange\ExchangeRateMockServiceApplication.class
+com\novabank\exchange\exception\GlobalExceptionHandler.class
