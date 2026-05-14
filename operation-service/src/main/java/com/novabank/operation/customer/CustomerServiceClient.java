@@ -12,7 +12,6 @@ import org.springframework.http.HttpStatusCode;
 import org.springframework.stereotype.Component;
 import org.springframework.web.reactive.function.client.WebClient;
 import reactor.core.publisher.Mono;
-import java.math.BigDecimal;
 
 @Slf4j
 @Component
@@ -39,28 +38,8 @@ public class CustomerServiceClient {
     }
 
     public Mono<CustomerDTO> getCustomerFallback(Long id, Throwable ex) {
-        log.error("Servicio de clientes caído para ID: {}. Causa: {}", id, ex.getMessage());
+        log.error("Customer service caído para ID: {}. Causa: {}", id, ex.getMessage());
         return Mono.error(new CustomerNotFoundException(
-                "Servicio de clientes no disponible, intente más tarde. ID: " + id));
-    }
-
-    public Mono<AccountDTO> getAccountByIdFallback(Long accountId, Throwable ex) {
-        log.error("Account service caído para accountId: {}. Causa: {}", accountId, ex.getMessage());
-        return Mono.error(new RuntimeException("Servicio de cuentas no disponible. ID: " + accountId));
-    }
-
-    public Mono<AccountDTO> getAccountByNumberFallback(String accountNumber, Throwable ex) {
-        log.error("Account service caído para accountNumber: {}. Causa: {}", accountNumber, ex.getMessage());
-        return Mono.error(new RuntimeException("Servicio de cuentas no disponible. Número: " + accountNumber));
-    }
-
-    public Mono<AccountDTO> updateBalanceFallback(Long accountId, BigDecimal amount, Throwable ex) {
-        log.error("Account service caído al actualizar balance. accountId: {}. Causa: {}", accountId, ex.getMessage());
-        return Mono.error(new RuntimeException("No se pudo actualizar el balance. ID: " + accountId));
-    }
-
-    public Mono<TransactionDTO> createTransactionFallback(Long accountId, CreateTransactionRequest request, Throwable ex) {
-        log.error("Account service caído al crear transacción. accountId: {}. Causa: {}", accountId, ex.getMessage());
-        return Mono.error(new RuntimeException("No se pudo registrar la transacción. ID: " + accountId));
+                "Servicio de clientes no disponible. ID: " + id));
     }
 }

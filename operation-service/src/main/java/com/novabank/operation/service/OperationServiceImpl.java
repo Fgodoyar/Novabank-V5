@@ -18,6 +18,7 @@ import java.math.BigDecimal;
 public class OperationServiceImpl implements OperationService {
 
     private final AccountServiceClient accountServiceClient;
+    private final ExchangeRateMockService exchangeRateMockService;
 
     @Override
     public Mono<TransactionDTO> deposit(CreateOperationRequest request) {
@@ -71,35 +72,40 @@ public class OperationServiceImpl implements OperationService {
                     "El monto tiene que ser mayor que 0."));
         }
 
-        return Mono.zip(
-                        accountServiceClient.getAccountByNumber(request.fromAccountNumber()),
-                        accountServiceClient.getAccountByNumber(request.toAccountNumber())
-                )
-                .flatMap(tuple -> {
-                    AccountDTO source = tuple.getT1();
-                    AccountDTO destination = tuple.getT2();
-
-                    if (source.balance().compareTo(request.amount()) < 0) {
-                        return Mono.error(new InsufficientBalanceException(
-                                source.accountNumber(), source.balance(), request.amount()));
-                    }
-
-                    return Mono.zip(
-                            accountServiceClient.updateBalance(source.accountId(), request.amount().negate()),
-                            accountServiceClient.updateBalance(destination.accountId(), request.amount())
-                    ).flatMap(updated ->
-                            Mono.zip(
-                                    accountServiceClient.createTransaction(
-                                            source.accountId(),
-                                            new CreateTransactionRequest("TRANSFERENCIA_SALIENTE", request.amount(),
-                                                    "Transferencia a " + request.toAccountNumber())),
-                                    accountServiceClient.createTransaction(
-                                            destination.accountId(),
-                                            new CreateTransactionRequest("TRANSFERENCIA_ENTRANTE", request.amount(),
-                                                    "Transferencia de " + request.fromAccountNumber()))
-                            )
-                    );
-                })
-                .flatMapMany(tuple -> Flux.just(tuple.getT1(), tuple.getT2()));
+        return exchangeRateMockService.getRate(request.currency(), "EUR")
+                .map(rate -> request.amount().multiply(rate))
+                .flatMapMany(amountInEuros ->
+                        accountServiceClient.getAccountByNumber(request.fromAccountNumber())
+                                .switchIfEmpty(Mono.error(new AccountNotFoundException(
+                                        request.fromAccountNumber())))
+                                .flatMapMany(source -> {
+                                    if (source.balance().compareTo(amountInEuros) < 0) {
+                                        return Flux.error(new InsufficientBalanceException(
+                                                source.accountNumber(), source.balance(), amountInEuros));
+                                    }
+                                    return accountServiceClient.getAccountByNumber(request.toAccountNumber())
+                                            .switchIfEmpty(Mono.error(new AccountNotFoundException(
+                                                    request.toAccountNumber())))
+                                            .flatMapMany(destination -> Mono.zip(
+                                                            accountServiceClient.updateBalance(
+                                                                    source.accountId(), amountInEuros.negate()),
+                                                            accountServiceClient.updateBalance(
+                                                                    destination.accountId(), amountInEuros))
+                                                    .thenMany(Flux.merge(
+                                                            accountServiceClient.createTransaction(
+                                                                    source.accountId(),
+                                                                    new CreateTransactionRequest(
+                                                                            "TRANSFERENCIA_SALIENTE", amountInEuros,
+                                                                            "Transferencia a " + request.toAccountNumber() +
+                                                                                    " (" + request.amount() + " " + request.currency() + ")")),
+                                                            accountServiceClient.createTransaction(
+                                                                    destination.accountId(),
+                                                                    new CreateTransactionRequest(
+                                                                            "TRANSFERENCIA_ENTRANTE", amountInEuros,
+                                                                            "Transferencia de " + request.fromAccountNumber() +
+                                                                                    " (" + request.amount() + " " + request.currency() + ")"))
+                                                    )));
+                                })
+                );
     }
 }
