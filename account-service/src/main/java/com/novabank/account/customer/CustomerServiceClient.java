@@ -18,7 +18,7 @@ public class CustomerServiceClient {
 
     public CustomerServiceClient(@LoadBalanced WebClient.Builder builder) {
         this.webClient = builder
-                .baseUrl("http://CLIENTE-SERVICE")
+                .baseUrl("http://CUSTOMER-SERVICE")
                 .build();
     }
 

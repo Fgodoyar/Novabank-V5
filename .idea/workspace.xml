@@ -4,7 +4,11 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="54ba782e-3a95-4627-938d-1c69b056fe8e" name="Changes" comment="" />
+    <list default="true" id="54ba782e-3a95-4627-938d-1c69b056fe8e" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/account-service/src/main/java/com/novabank/account/controller/TransactionController.java" beforeDir="false" afterPath="$PROJECT_DIR$/account-service/src/main/java/com/novabank/account/controller/TransactionController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/account-service/src/main/java/com/novabank/account/customer/CustomerServiceClient.java" beforeDir="false" afterPath="$PROJECT_DIR$/account-service/src/main/java/com/novabank/account/customer/CustomerServiceClient.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/operation-service/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/operation-service/pom.xml" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -43,15 +47,21 @@
   </component>
   <component name="PropertiesComponent"><![CDATA[{
   "keyToString": {
+    "ModuleVcsDetector.initialDetectionPerformed": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
-    "git-widget-placeholder": "main",
+    "RunOnceActivity.git.unshallow": "true",
+    "git-widget-placeholder": "3-operation-reactive",
     "kotlin-language-version-configured": "true",
-    "last_opened_file_path": "C:/Users/frang/IdeaProjects/Novabank-V5/novabank-reactive/account-service"
+    "last_opened_file_path": "C:/Users/frang/IdeaProjects/Novabank-V5/novabank-reactive/operation-service"
   }
 }]]></component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\frang\IdeaProjects\Novabank-V5\novabank-reactive\operation-service" />
       <recent name="C:\Users\frang\IdeaProjects\Novabank-V5\novabank-reactive\account-service" />
+    </key>
+    <key name="CopyClassDialog.RECENTS_KEY">
+      <recent name="com.novabank.operation.exception" />
     </key>
   </component>
   <component name="RunManager">
@@ -70,7 +80,7 @@
   <component name="SharedIndexes">
     <attachedChunks>
       <set>
-        <option value="bundled-jdk-30f59d01ecdd-2fc7cc6b9a17-intellij.indexing.shared.core-IU-253.31033.145" />
+        <option value="bundled-jdk-30f59d01ecdd-2fc7cc6b9a17-intellij.indexing.shared.core-IU-253.30387.90" />
       </set>
     </attachedChunks>
   </component>
