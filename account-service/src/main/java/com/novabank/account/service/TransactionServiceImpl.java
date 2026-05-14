@@ -3,6 +3,7 @@ package com.novabank.account.service;
 import com.novabank.account.domain.Transaction;
 import com.novabank.account.dto.CreateTransactionRequest;
 import com.novabank.account.dto.TransactionDTO;
+import com.novabank.account.event.TransactionEventBus;
 import com.novabank.account.exception.AccountNotFoundException;
 import com.novabank.account.mapper.AccountMapper;
 import com.novabank.account.mapper.TransactionMapper;
@@ -24,6 +25,7 @@ public class TransactionServiceImpl implements TransactionService {
     private final TransactionRepository transactionRepository;
     private final AccountMapper accountMapper;
     private final TransactionMapper transactionMapper;
+    private final TransactionEventBus transactionEventBus;
 
     @Transactional
     @Override
@@ -39,7 +41,8 @@ public class TransactionServiceImpl implements TransactionService {
                             .build();
                     return transactionRepository.save(transaction);
                 })
-                .map(transactionMapper::toDTO);
+                .map(transactionMapper::toDTO)
+                .doOnSuccess(transactionEventBus::publish);
 
     }
 

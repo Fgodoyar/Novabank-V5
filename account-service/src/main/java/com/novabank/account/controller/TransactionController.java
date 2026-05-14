@@ -3,6 +3,7 @@ package com.novabank.account.controller;
 
 import com.novabank.account.dto.CreateTransactionRequest;
 import com.novabank.account.dto.TransactionDTO;
+import com.novabank.account.event.TransactionEventBus;
 import com.novabank.account.service.TransactionService;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.responses.ApiResponse;
@@ -10,6 +11,7 @@ import io.swagger.v3.oas.annotations.tags.Tag;
 import lombok.RequiredArgsConstructor;
 import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.http.HttpStatus;
+import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import reactor.core.publisher.Flux;
@@ -26,6 +28,7 @@ import java.util.List;
 public class TransactionController {
 
     private final TransactionService transactionService;
+    private final TransactionEventBus transactionEventBus;
 
     @PostMapping("/{accountId}/transactions")
     public Mono<TransactionDTO> createTransaction(
@@ -58,5 +61,10 @@ public class TransactionController {
         LocalDateTime end = endDate.atTime(23, 59, 59);
 
         return transactionService.findByRangeBetweenDate(accountId, start, end);
+    }
+
+    @GetMapping(value = "/{id}/transactions/stream", produces = MediaType.TEXT_EVENT_STREAM_VALUE)
+    public Flux<TransactionDTO> streamTransactions(@PathVariable Long id) {
+        return transactionEventBus.streamByAccount(id);
     }
 }
