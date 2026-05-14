@@ -10,7 +10,6 @@
         <module name="api-gateway" />
         <module name="operation-service" />
         <module name="config-server" />
-        <module name="account-service" />
         <module name="eureka-server" />
         <module name="auth-server" />
       </profile>
@@ -22,6 +21,7 @@
           <entry name="$MAVEN_REPOSITORY$/org/projectlombok/lombok/1.18.44/lombok-1.18.44.jar" />
           <entry name="$MAVEN_REPOSITORY$/org/mapstruct/mapstruct-processor/1.6.3/mapstruct-processor-1.6.3.jar" />
         </processorPath>
+        <module name="account-service" />
         <module name="customer-service" />
       </profile>
     </annotationProcessing>
