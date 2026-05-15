@@ -15,7 +15,6 @@ import java.math.BigDecimal;
 
 @Slf4j
 @Component
-@RequiredArgsConstructor
 public class AccountServiceClient {
 
     private final WebClient webClient;

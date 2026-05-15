@@ -1,7 +1,7 @@
 DROP TABLE IF EXISTS customers;
 
 CREATE TABLE customers (
-    customer_id   BIGINT AUTO_INCREMENT PRIMARY KEY,
+    customer_id   BIGINT GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
     customer_name VARCHAR(100)  NOT NULL,
     last_name     VARCHAR(100)  NOT NULL,
     dni           VARCHAR(20)   NOT NULL UNIQUE,
