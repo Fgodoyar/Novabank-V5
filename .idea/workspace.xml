@@ -4,13 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="54ba782e-3a95-4627-938d-1c69b056fe8e" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/customer-service/src/main/resources/schema.sql" beforeDir="false" afterPath="$PROJECT_DIR$/customer-service/src/main/resources/schema.sql" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/operation-service/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/operation-service/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/operation-service/src/main/java/com/novabank/operation/customer/AccountServiceClient.java" beforeDir="false" afterPath="$PROJECT_DIR$/operation-service/src/main/java/com/novabank/operation/customer/AccountServiceClient.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/operation-service/target/classes/com/novabank/operation/customer/AccountServiceClient.class" beforeDir="false" afterPath="$PROJECT_DIR$/operation-service/target/classes/com/novabank/operation/customer/AccountServiceClient.class" afterDir="false" />
-    </list>
+    <list default="true" id="54ba782e-3a95-4627-938d-1c69b056fe8e" name="Changes" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />

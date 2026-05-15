@@ -1,11 +1,13 @@
-DROP TABLE IF EXISTS customers;
+CREATE SEQUENCE IF NOT EXISTS customers_customer_id_seq;
 
-CREATE TABLE customers (
-    customer_id   BIGINT GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
-    customer_name VARCHAR(100)  NOT NULL,
-    last_name     VARCHAR(100)  NOT NULL,
-    dni           VARCHAR(20)   NOT NULL UNIQUE,
-    email         VARCHAR(150)  NOT NULL UNIQUE,
-    phone_number  VARCHAR(20)   NOT NULL UNIQUE,
-    creation_date TIMESTAMP
-);
+CREATE TABLE IF NOT EXISTS customers
+(
+    customer_id   BIGINT       NOT NULL DEFAULT nextval('customers_customer_id_seq'),
+    creation_date TIMESTAMP,
+    customer_name VARCHAR(255) NOT NULL,
+    dni           VARCHAR(255) NOT NULL UNIQUE,
+    email         VARCHAR(255) NOT NULL UNIQUE,
+    last_name     VARCHAR(255) NOT NULL,
+    phone_number  VARCHAR(255) NOT NULL UNIQUE,
+    CONSTRAINT customers_pkey PRIMARY KEY (customer_id)
+    );
