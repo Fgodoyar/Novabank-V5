@@ -8,6 +8,7 @@ import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.InjectMocks;
 import org.mockito.junit.jupiter.MockitoExtension;
+import reactor.test.StepVerifier;
 
 import java.lang.reflect.Field;
 
@@ -94,6 +95,41 @@ public class JwtServiceTest {
         @Test
         void getExpiration_shouldReturnCorrectValue() {
             assertEquals(EXPIRATION, jwtService.getExpiration());
+        }
+    }
+
+    @Nested
+    class ReactiveMethodsTest {
+
+        @Test
+        void extractUsernameMono_shouldReturnCorrectUsername() {
+            String token = jwtService.generateToken(USERNAME);
+
+            StepVerifier.create(jwtService.extractUsernameMono(token))
+                    .expectNext(USERNAME)
+                    .verifyComplete();
+        }
+
+        @Test
+        void isTokenValidMono_validToken_shouldReturnTrue() {
+            String token = jwtService.generateToken(USERNAME);
+
+            StepVerifier.create(jwtService.isTokenValidMono(token, USERNAME))
+                    .expectNext(true)
+                    .verifyComplete();
+        }
+
+        @Test
+        void isTokenValidMono_expiredToken_shouldEmitError() throws Exception {
+            Field expirationField = JwtService.class.getDeclaredField("expiration");
+            expirationField.setAccessible(true);
+            expirationField.set(jwtService, -1000L);
+
+            String token = jwtService.generateToken(USERNAME);
+
+            StepVerifier.create(jwtService.isTokenValidMono(token, USERNAME))
+                    .expectError(ExpiredJwtException.class)
+                    .verify();
         }
     }
 }

@@ -40,20 +40,22 @@ public class CustomerServiceImpl implements CustomerService {
     @Transactional
     @Override
     public Mono<CustomerDTO> createCustomer(CreateCustomerRequest request) {
-
-        if (customerRepository.existsByDni(request.dni()).block())
-            throw new DuplicateDniException("Ya existe un cliente con este DNI: " + request.dni());
-
-        if (customerRepository.existsByEmail(request.email()).block())
-            throw new DuplicateEmailException("Ya existe un cliente con este email: " + request.email());
-
-        if (customerRepository.existsByPhoneNumber(request.phoneNumber()).block())
-            throw new DuplicatePhoneNumberException("Ya existe un cliente con este número de teléfono: " + request.phoneNumber());
-
-        return customerRepository.findByDni(request.dni())
-                .flatMap(exist -> Mono.<Customer> error (new DuplicateDniException(request.dni())))
-                .switchIfEmpty(Mono.defer(() ->
-                        customerRepository.save(customerMapper.toEntity(request))))
+        return customerRepository.existsByDni(request.dni())
+                .flatMap(dniExists -> {
+                    if (dniExists) return Mono.error(new DuplicateDniException(
+                            "Ya existe un cliente con este DNI: " + request.dni()));
+                    return customerRepository.existsByEmail(request.email());
+                })
+                .flatMap(emailExists -> {
+                    if (emailExists) return Mono.error(new DuplicateEmailException(
+                            "Ya existe un cliente con este email: " + request.email()));
+                    return customerRepository.existsByPhoneNumber(request.phoneNumber());
+                })
+                .flatMap(phoneExists -> {
+                    if (phoneExists) return Mono.error(new DuplicatePhoneNumberException(
+                            "Ya existe un cliente con este teléfono: " + request.phoneNumber()));
+                    return customerRepository.save(customerMapper.toEntity(request));
+                })
                 .map(customerMapper::toDTO);
     }
 

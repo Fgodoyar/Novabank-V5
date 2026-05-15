@@ -12,7 +12,7 @@ import java.time.LocalDateTime;
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
-@ToString(exclude = "accounts")
+@ToString
 @EqualsAndHashCode(onlyExplicitlyIncluded = true)
 @Table(name = "customers")
 public class Customer {

@@ -1,9 +1,10 @@
 package com.novabank.operation;
 
 import com.novabank.operation.customer.AccountServiceClient;
-import com.novabank.operation.customer.CustomerServiceClient;
 import com.novabank.operation.dto.*;
+import com.novabank.operation.exception.AccountNotFoundException;
 import com.novabank.operation.exception.InsufficientBalanceException;
+import com.novabank.operation.service.ExchangeRateMockService;
 import com.novabank.operation.service.OperationServiceImpl;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Nested;
@@ -12,11 +13,13 @@ import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
+import reactor.core.publisher.Flux;
+import reactor.core.publisher.Mono;
+import reactor.test.StepVerifier;
 
 import java.math.BigDecimal;
-import java.util.List;
+import java.time.LocalDateTime;
 
-import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.Mockito.*;
 
 @ExtendWith(MockitoExtension.class)
@@ -26,7 +29,7 @@ public class OperationServiceTest {
     private AccountServiceClient accountServiceClient;
 
     @Mock
-    private CustomerServiceClient customerServiceClient;
+    private ExchangeRateMockService exchangeRateService;
 
     @InjectMocks
     private OperationServiceImpl operationService;
@@ -40,13 +43,30 @@ public class OperationServiceTest {
     void setUp() {
         amount = new BigDecimal("500.00");
 
-        sourceAccount = new AccountDTO(1L, "ES9121000000000000000002",
-                "Pepillo Grillo", new BigDecimal("1000.00"), null);
+        sourceAccount = AccountDTO.builder()
+                .accountId(1L)
+                .accountNumber("ES9121000000000000000002")
+                .accountHolder("Pepillo Grillo")
+                .balance(new BigDecimal("1000.00"))
+                .creationDate(LocalDateTime.now())
+                .build();
 
-        destinationAccount = new AccountDTO(2L, "ES9121000000000000000003",
-                "Pepilla Grilla", new BigDecimal("500.00"), null);
+        destinationAccount = AccountDTO.builder()
+                .accountId(2L)
+                .accountNumber("ES9121000000000000000003")
+                .accountHolder("Pepilla Grilla")
+                .balance(new BigDecimal("500.00"))
+                .creationDate(LocalDateTime.now())
+                .build();
 
-        transactionDTO = new TransactionDTO(1L, "DEPOSIT", amount, "Depósito", null, 1L);
+        transactionDTO = TransactionDTO.builder()
+                .transactionId(1L)
+                .transactionType("DEPOSIT")
+                .amount(amount)
+                .description("Depósito")
+                .creationDate(LocalDateTime.now())
+                .accountId(1L)
+                .build();
     }
 
     @Nested
@@ -55,14 +75,17 @@ public class OperationServiceTest {
         @Test
         void deposit_validData_shouldReturnTransactionDTO() {
             when(accountServiceClient.getAccountByNumber("ES9121000000000000000002"))
-                    .thenReturn(sourceAccount);
-            when(accountServiceClient.createTransaction(any(), any()))
-                    .thenReturn(transactionDTO);
+                    .thenReturn(Mono.just(sourceAccount));
+            when(accountServiceClient.updateBalance(eq(1L), eq(amount)))
+                    .thenReturn(Mono.just(sourceAccount));
+            when(accountServiceClient.createTransaction(eq(1L), any(CreateTransactionRequest.class)))
+                    .thenReturn(Mono.just(transactionDTO));
 
-            TransactionDTO result = operationService.deposit(
-                    new CreateOperationRequest("ES9121000000000000000002", amount));
+            StepVerifier.create(operationService.deposit(
+                            new CreateOperationRequest("ES9121000000000000000002", amount)))
+                    .expectNext(transactionDTO)
+                    .verifyComplete();
 
-            assertNotNull(result);
             verify(accountServiceClient).updateBalance(eq(1L), eq(amount));
             verify(accountServiceClient).createTransaction(eq(1L), any(CreateTransactionRequest.class));
         }
@@ -70,32 +93,34 @@ public class OperationServiceTest {
         @Test
         void deposit_accountNotFound_shouldThrowException() {
             when(accountServiceClient.getAccountByNumber("ES0000000000000000000000"))
-                    .thenReturn(null);
+                    .thenReturn(Mono.empty());
 
-            assertThrows(NullPointerException.class, () ->
-                    operationService.deposit(
-                            new CreateOperationRequest("ES0000000000000000000000", amount))
-            );
+            StepVerifier.create(operationService.deposit(
+                            new CreateOperationRequest("ES0000000000000000000000", amount)))
+                    .expectError(AccountNotFoundException.class)
+                    .verify();
+
             verify(accountServiceClient, never()).updateBalance(any(), any());
         }
 
         @Test
         void deposit_negativeAmount_shouldThrowException() {
-            assertThrows(IllegalArgumentException.class, () ->
-                    operationService.deposit(
+            StepVerifier.create(operationService.deposit(
                             new CreateOperationRequest("ES9121000000000000000002",
-                                    new BigDecimal("-100.00")))
-            );
+                                    new BigDecimal("-100.00"))))
+                    .expectError(IllegalArgumentException.class)
+                    .verify();
+
             verifyNoInteractions(accountServiceClient);
         }
 
         @Test
         void deposit_zeroAmount_shouldThrowException() {
-            assertThrows(IllegalArgumentException.class, () ->
-                    operationService.deposit(
-                            new CreateOperationRequest("ES9121000000000000000002",
-                                    BigDecimal.ZERO))
-            );
+            StepVerifier.create(operationService.deposit(
+                            new CreateOperationRequest("ES9121000000000000000002", BigDecimal.ZERO)))
+                    .expectError(IllegalArgumentException.class)
+                    .verify();
+
             verifyNoInteractions(accountServiceClient);
         }
     }
@@ -106,14 +131,17 @@ public class OperationServiceTest {
         @Test
         void withdraw_validData_shouldReturnTransactionDTO() {
             when(accountServiceClient.getAccountByNumber("ES9121000000000000000002"))
-                    .thenReturn(sourceAccount);
-            when(accountServiceClient.createTransaction(any(), any()))
-                    .thenReturn(transactionDTO);
+                    .thenReturn(Mono.just(sourceAccount));
+            when(accountServiceClient.updateBalance(eq(1L), eq(amount.negate())))
+                    .thenReturn(Mono.just(sourceAccount));
+            when(accountServiceClient.createTransaction(eq(1L), any(CreateTransactionRequest.class)))
+                    .thenReturn(Mono.just(transactionDTO));
 
-            TransactionDTO result = operationService.withdraw(
-                    new CreateOperationRequest("ES9121000000000000000002", amount));
+            StepVerifier.create(operationService.withdraw(
+                            new CreateOperationRequest("ES9121000000000000000002", amount)))
+                    .expectNext(transactionDTO)
+                    .verifyComplete();
 
-            assertNotNull(result);
             verify(accountServiceClient).updateBalance(eq(1L), eq(amount.negate()));
             verify(accountServiceClient).createTransaction(eq(1L), any(CreateTransactionRequest.class));
         }
@@ -121,23 +149,25 @@ public class OperationServiceTest {
         @Test
         void withdraw_insufficientBalance_shouldThrowException() {
             when(accountServiceClient.getAccountByNumber("ES9121000000000000000002"))
-                    .thenReturn(sourceAccount);
+                    .thenReturn(Mono.just(sourceAccount));
 
-            assertThrows(InsufficientBalanceException.class, () ->
-                    operationService.withdraw(
+            StepVerifier.create(operationService.withdraw(
                             new CreateOperationRequest("ES9121000000000000000002",
-                                    new BigDecimal("9999.00")))
-            );
+                                    new BigDecimal("9999.00"))))
+                    .expectError(InsufficientBalanceException.class)
+                    .verify();
+
             verify(accountServiceClient, never()).updateBalance(any(), any());
         }
 
         @Test
         void withdraw_negativeAmount_shouldThrowException() {
-            assertThrows(IllegalArgumentException.class, () ->
-                    operationService.withdraw(
+            StepVerifier.create(operationService.withdraw(
                             new CreateOperationRequest("ES9121000000000000000002",
-                                    new BigDecimal("-100.00")))
-            );
+                                    new BigDecimal("-100.00"))))
+                    .expectError(IllegalArgumentException.class)
+                    .verify();
+
             verifyNoInteractions(accountServiceClient);
         }
     }
@@ -147,50 +177,54 @@ public class OperationServiceTest {
 
         @Test
         void transfer_validData_shouldReturnTwoTransactions() {
+            when(exchangeRateService.getRate("EUR", "EUR"))
+                    .thenReturn(Mono.just(BigDecimal.ONE));
             when(accountServiceClient.getAccountByNumber("ES9121000000000000000002"))
-                    .thenReturn(sourceAccount);
+                    .thenReturn(Mono.just(sourceAccount));
             when(accountServiceClient.getAccountByNumber("ES9121000000000000000003"))
-                    .thenReturn(destinationAccount);
+                    .thenReturn(Mono.just(destinationAccount));
+            when(accountServiceClient.updateBalance(any(), any()))
+                    .thenReturn(Mono.just(sourceAccount));
             when(accountServiceClient.createTransaction(any(), any()))
-                    .thenReturn(transactionDTO);
+                    .thenReturn(Mono.just(transactionDTO));
 
-            List<TransactionDTO> result = operationService.transfer(
-                    new CreateTransferRequest(
-                            "ES9121000000000000000002",
-                            "ES9121000000000000000003",
-                            amount));
-
-            assertEquals(2, result.size());
-            verify(accountServiceClient, times(2)).updateBalance(any(), any());
-            verify(accountServiceClient, times(2)).createTransaction(any(), any());
+            StepVerifier.create(operationService.transfer(
+                            new CreateTransferRequest(
+                                    "ES9121000000000000000002",
+                                    "ES9121000000000000000003",
+                                    amount, "EUR")))
+                    .expectNextCount(2)
+                    .verifyComplete();
         }
 
         @Test
         void transfer_sameAccount_shouldThrowException() {
-            assertThrows(IllegalArgumentException.class, () ->
-                    operationService.transfer(
+            StepVerifier.create(operationService.transfer(
                             new CreateTransferRequest(
                                     "ES9121000000000000000002",
                                     "ES9121000000000000000002",
-                                    amount))
-            );
+                                    amount, "EUR")))
+                    .expectError(IllegalArgumentException.class)
+                    .verify();
+
             verifyNoInteractions(accountServiceClient);
         }
 
         @Test
         void transfer_insufficientBalance_shouldThrowException() {
+            when(exchangeRateService.getRate("EUR", "EUR"))
+                    .thenReturn(Mono.just(BigDecimal.ONE));
             when(accountServiceClient.getAccountByNumber("ES9121000000000000000002"))
-                    .thenReturn(sourceAccount);
-            when(accountServiceClient.getAccountByNumber("ES9121000000000000000003"))
-                    .thenReturn(destinationAccount);
+                    .thenReturn(Mono.just(sourceAccount));
 
-            assertThrows(InsufficientBalanceException.class, () ->
-                    operationService.transfer(
+            StepVerifier.create(operationService.transfer(
                             new CreateTransferRequest(
                                     "ES9121000000000000000002",
                                     "ES9121000000000000000003",
-                                    new BigDecimal("9999.00")))
-            );
+                                    new BigDecimal("9999.00"), "EUR")))
+                    .expectError(InsufficientBalanceException.class)
+                    .verify();
+
             verify(accountServiceClient, never()).updateBalance(any(), any());
         }
     }

@@ -5,15 +5,25 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.MethodArgumentNotValidException;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.RestControllerAdvice;
+import org.springframework.web.bind.support.WebExchangeBindException;
 import org.springframework.web.method.annotation.MethodArgumentTypeMismatchException;
 
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.stream.Collectors;
 
 @RestControllerAdvice
 public class GlobalExceptionHandler {
+
+    @ExceptionHandler(WebExchangeBindException.class)
+    public ResponseEntity<String> handleValidation(WebExchangeBindException ex) {
+        String message = ex.getBindingResult().getFieldErrors().stream()
+                .map(e -> e.getField() + ": " + e.getDefaultMessage())
+                .collect(Collectors.joining(", "));
+        return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(message);
+    }
 
     @ExceptionHandler(CustomerNotFoundException.class)
     public ResponseEntity<Map<String, Object>> handleCustomerNotFound(CustomerNotFoundException ex) {
@@ -25,22 +35,22 @@ public class GlobalExceptionHandler {
     @ExceptionHandler(DuplicateDniException.class)
     public ResponseEntity<Map<String, Object>> handleDuplicateDni(DuplicateDniException ex) {
         return ResponseEntity
-                .status(HttpStatus.NOT_FOUND)
-                .body(buildError(HttpStatus.NOT_FOUND, ex.getMessage()));
+                .status(HttpStatus.BAD_REQUEST)
+                .body(buildError(HttpStatus.BAD_REQUEST, ex.getMessage()));
     }
 
     @ExceptionHandler(DuplicateEmailException.class)
     public ResponseEntity<Map<String, Object>> handleDuplicateEmail(DuplicateEmailException ex) {
         return ResponseEntity
-                .status(HttpStatus.NOT_FOUND)
-                .body(buildError(HttpStatus.NOT_FOUND, ex.getMessage()));
+                .status(HttpStatus.BAD_REQUEST)
+                .body(buildError(HttpStatus.BAD_REQUEST, ex.getMessage()));
     }
 
     @ExceptionHandler(DuplicatePhoneNumberException.class)
     public ResponseEntity<Map<String, Object>> handleDuplicatePhoneNumber(DuplicatePhoneNumberException ex) {
         return ResponseEntity
-                .status(HttpStatus.NOT_FOUND)
-                .body(buildError(HttpStatus.NOT_FOUND, ex.getMessage()));
+                .status(HttpStatus.BAD_REQUEST)
+                .body(buildError(HttpStatus.BAD_REQUEST, ex.getMessage()));
     }
 
     @ExceptionHandler(MethodArgumentNotValidException.class)

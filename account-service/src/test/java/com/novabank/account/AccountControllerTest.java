@@ -1,5 +1,6 @@
 package com.novabank.account;
 
+import com.novabank.account.config.SecurityConfig;
 import com.novabank.account.controller.AccountController;
 import com.novabank.account.dto.AccountDTO;
 import com.novabank.account.dto.CreateAccountRequest;
@@ -11,29 +12,32 @@ import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Nested;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
+import org.springframework.boot.test.autoconfigure.web.reactive.WebFluxTest;
 import org.springframework.boot.test.mock.mockito.MockBean;
 import org.springframework.context.annotation.Import;
 import org.springframework.http.MediaType;
 import org.springframework.security.test.context.support.WithMockUser;
-import org.springframework.test.web.servlet.MockMvc;
+import org.springframework.test.context.TestPropertySource;
+import org.springframework.test.web.reactive.server.WebTestClient;
+import reactor.core.publisher.Flux;
+import reactor.core.publisher.Mono;
 
 import java.math.BigDecimal;
 import java.time.LocalDateTime;
-import java.util.List;
 
 import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.Mockito.*;
-import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.*;
-import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.*;
 
-@WebMvcTest(AccountController.class)
+@WebFluxTest(AccountController.class)
 @Import(SecurityConfig.class)
 @WithMockUser
+@TestPropertySource(properties = {
+        "spring.config.import="
+})
 public class AccountControllerTest {
 
     @Autowired
-    private MockMvc mockMvc;
+    private WebTestClient webTestClient;
 
     @MockBean
     private AccountService accountService;
@@ -63,56 +67,58 @@ public class AccountControllerTest {
 
         @Test
         @DisplayName("POST /api/accounts → 201 con cuenta creada")
-        void createAccount_shouldReturn201WhenValid() throws Exception {
+        void createAccount_shouldReturn201WhenValid() {
             when(accountService.createAccount(any(CreateAccountRequest.class)))
-                    .thenReturn(accountDTO);
+                    .thenReturn(Mono.just(accountDTO));
 
-            mockMvc.perform(post("/api/accounts")
-                            .contentType(MediaType.APPLICATION_JSON)
-                            .content(VALID_JSON))
-                    .andExpect(status().isCreated())
-                    .andExpect(jsonPath("$.accountId").value(1L))
-                    .andExpect(jsonPath("$.accountNumber").value("ES9121000000000000000002"));
+            webTestClient.post().uri("/api/accounts")
+                    .contentType(MediaType.APPLICATION_JSON)
+                    .bodyValue(VALID_JSON)
+                    .exchange()
+                    .expectStatus().isCreated()
+                    .expectBody()
+                    .jsonPath("$.accountId").isEqualTo(1)
+                    .jsonPath("$.accountNumber").isEqualTo("ES9121000000000000000002");
 
             verify(accountService).createAccount(any(CreateAccountRequest.class));
         }
 
         @Test
         @DisplayName("POST /api/accounts → 400 si el body está vacío")
-        void createAccount_shouldReturn400WhenInvalid() throws Exception {
-
-            mockMvc.perform(post("/api/accounts")
-                            .contentType(MediaType.APPLICATION_JSON)
-                            .content("{}"))
-                    .andExpect(status().isBadRequest());
+        void createAccount_shouldReturn400WhenInvalid() {
+            webTestClient.post().uri("/api/accounts")
+                    .contentType(MediaType.APPLICATION_JSON)
+                    .bodyValue("{}")
+                    .exchange()
+                    .expectStatus().isBadRequest();
 
             verifyNoInteractions(accountService);
         }
 
         @Test
         @DisplayName("POST /api/accounts → 404 si el cliente no existe")
-        void createAccount_shouldReturn404WhenCustomerNotFound() throws Exception {
-
+        void createAccount_shouldReturn404WhenCustomerNotFound() {
             when(accountService.createAccount(any(CreateAccountRequest.class)))
-                    .thenThrow(new CustomerNotFoundException("Cliente no encontrado con ID: 1"));
+                    .thenReturn(Mono.error(new CustomerNotFoundException("Cliente no encontrado con ID: 1")));
 
-            mockMvc.perform(post("/api/accounts")
-                            .contentType(MediaType.APPLICATION_JSON)
-                            .content(VALID_JSON))
-                    .andExpect(status().isNotFound());
+            webTestClient.post().uri("/api/accounts")
+                    .contentType(MediaType.APPLICATION_JSON)
+                    .bodyValue(VALID_JSON)
+                    .exchange()
+                    .expectStatus().isNotFound();
         }
 
         @Test
         @DisplayName("POST /api/accounts → 400 si el cliente ya tiene cuenta")
-        void createAccount_shouldReturn400WhenDuplicate() throws Exception {
-
+        void createAccount_shouldReturn400WhenDuplicate() {
             when(accountService.createAccount(any(CreateAccountRequest.class)))
-                    .thenThrow(new IllegalArgumentException("El cliente ya tiene una cuenta registrada"));
+                    .thenReturn(Mono.error(new IllegalArgumentException("El cliente ya tiene una cuenta registrada")));
 
-            mockMvc.perform(post("/api/accounts")
-                            .contentType(MediaType.APPLICATION_JSON)
-                            .content(VALID_JSON))
-                    .andExpect(status().isBadRequest());
+            webTestClient.post().uri("/api/accounts")
+                    .contentType(MediaType.APPLICATION_JSON)
+                    .bodyValue(VALID_JSON)
+                    .exchange()
+                    .expectStatus().isBadRequest();
         }
     }
 
@@ -121,25 +127,26 @@ public class AccountControllerTest {
 
         @Test
         @DisplayName("GET /api/accounts/number/{accountNumber} → 200 cuando existe")
-        void findByAccountNumber_shouldReturn200WhenFound() throws Exception {
-
+        void findByAccountNumber_shouldReturn200WhenFound() {
             when(accountService.findByAccountNumber("ES9121000000000000000002"))
-                    .thenReturn(accountDTO);
+                    .thenReturn(Mono.just(accountDTO));
 
-            mockMvc.perform(get("/api/accounts/number/ES9121000000000000000002"))
-                    .andExpect(status().isOk())
-                    .andExpect(jsonPath("$.accountNumber").value("ES9121000000000000000002"));
+            webTestClient.get().uri("/api/accounts/number/ES9121000000000000000002")
+                    .exchange()
+                    .expectStatus().isOk()
+                    .expectBody()
+                    .jsonPath("$.accountNumber").isEqualTo("ES9121000000000000000002");
         }
 
         @Test
         @DisplayName("GET /api/accounts/number/{accountNumber} → 404 cuando no existe")
-        void findByAccountNumber_shouldReturn404WhenNotFound() throws Exception {
-
+        void findByAccountNumber_shouldReturn404WhenNotFound() {
             when(accountService.findByAccountNumber("00000000X"))
-                    .thenThrow(new AccountNotFoundException("Cuenta no encontrada"));
+                    .thenReturn(Mono.error(new AccountNotFoundException("Cuenta no encontrada")));
 
-            mockMvc.perform(get("/api/accounts/number/00000000X"))
-                    .andExpect(status().isNotFound());
+            webTestClient.get().uri("/api/accounts/number/00000000X")
+                    .exchange()
+                    .expectStatus().isNotFound();
         }
     }
 
@@ -148,26 +155,28 @@ public class AccountControllerTest {
 
         @Test
         @DisplayName("GET /api/accounts/customer/{customerId} → 200 con lista")
-        void findByCustomerId_shouldReturn200WithList() throws Exception {
-
+        void findByCustomerId_shouldReturn200WithList() {
             when(accountService.findByCustomerId(1L))
-                    .thenReturn(List.of(accountDTO));
+                    .thenReturn(Flux.just(accountDTO));
 
-            mockMvc.perform(get("/api/accounts/customer/1"))
-                    .andExpect(status().isOk())
-                    .andExpect(jsonPath("$.length()").value(1));
+            webTestClient.get().uri("/api/accounts/customer/1")
+                    .exchange()
+                    .expectStatus().isOk()
+                    .expectBodyList(AccountDTO.class)
+                    .hasSize(1);
         }
 
         @Test
         @DisplayName("GET /api/accounts/customer/{customerId} → 200 lista vacía")
-        void findByCustomerId_shouldReturn200WithEmptyList() throws Exception {
-
+        void findByCustomerId_shouldReturn200WithEmptyList() {
             when(accountService.findByCustomerId(1L))
-                    .thenReturn(List.of());
+                    .thenReturn(Flux.empty());
 
-            mockMvc.perform(get("/api/accounts/customer/1"))
-                    .andExpect(status().isOk())
-                    .andExpect(jsonPath("$.length()").value(0));
+            webTestClient.get().uri("/api/accounts/customer/1")
+                    .exchange()
+                    .expectStatus().isOk()
+                    .expectBodyList(AccountDTO.class)
+                    .hasSize(0);
         }
     }
 
@@ -176,25 +185,26 @@ public class AccountControllerTest {
 
         @Test
         @DisplayName("GET /api/accounts/customer/{customerId}/transactions → 200 con lista")
-        void findByCustomerIdWithTransactions_shouldReturn200WhenFound() throws Exception {
-
+        void findByCustomerIdWithTransactions_shouldReturn200WhenFound() {
             when(accountService.findByCustomerIdWithTransactions(1L))
-                    .thenReturn(List.of(accountDTO));
+                    .thenReturn(Flux.just(accountDTO));
 
-            mockMvc.perform(get("/api/accounts/customer/1/transactions"))
-                    .andExpect(status().isOk())
-                    .andExpect(jsonPath("$.length()").value(1));
+            webTestClient.get().uri("/api/accounts/customer/1/transactions")
+                    .exchange()
+                    .expectStatus().isOk()
+                    .expectBodyList(AccountDTO.class)
+                    .hasSize(1);
         }
 
         @Test
         @DisplayName("GET /api/accounts/customer/{customerId}/transactions → 404 cuando no existe")
-        void findByCustomerIdWithTransactions_shouldReturn404WhenNotFound() throws Exception {
-
+        void findByCustomerIdWithTransactions_shouldReturn404WhenNotFound() {
             when(accountService.findByCustomerIdWithTransactions(100L))
-                    .thenThrow(new AccountNotFoundException("Cuenta no encontrada"));
+                    .thenReturn(Flux.error(new AccountNotFoundException("Cuenta no encontrada")));
 
-            mockMvc.perform(get("/api/accounts/customer/100/transactions"))
-                    .andExpect(status().isNotFound());
+            webTestClient.get().uri("/api/accounts/customer/100/transactions")
+                    .exchange()
+                    .expectStatus().isNotFound();
         }
     }
 }

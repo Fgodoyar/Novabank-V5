@@ -1,7 +1,5 @@
 package com.novabank.account.service;
 
-
-import com.novabank.account.dto.CustomerDTO;
 import com.novabank.account.customer.CustomerServiceClient;
 import com.novabank.account.domain.Account;
 import com.novabank.account.dto.AccountDTO;
@@ -12,26 +10,24 @@ import com.novabank.account.mapper.AccountMapper;
 import com.novabank.account.mapper.TransactionMapper;
 import com.novabank.account.repository.AccountRepository;
 import com.novabank.account.repository.TransactionRepository;
-import org.springframework.transaction.annotation.Transactional;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 import reactor.core.publisher.Flux;
 import reactor.core.publisher.Mono;
 
 import java.math.BigDecimal;
-
 import java.util.Random;
-
 
 @Service
 @RequiredArgsConstructor
 public class AccountServiceImpl implements AccountService {
+
     private final AccountRepository accountRepository;
     private final TransactionRepository transactionRepository;
     private final CustomerServiceClient customerServiceClient;
     private final AccountMapper accountMapper;
     private final TransactionMapper transactionMapper;
-
 
     @Transactional
     @Override
@@ -48,7 +44,7 @@ public class AccountServiceImpl implements AccountService {
                     Account account = accountMapper.toEntity(request);
                     account.setAccountNumber(generateAccountNumber());
                     account.setBalance(BigDecimal.ZERO);
-                    return accountRepository.save(accountMapper.toEntity(request));
+                    return accountRepository.save(account); // ← misma instancia
                 })
                 .map(accountMapper::toDTO);
     }
@@ -69,8 +65,7 @@ public class AccountServiceImpl implements AccountService {
     @Override
     public Flux<AccountDTO> findByCustomerId(Long customerId) {
         return accountRepository.findByCustomerId(customerId)
-                .map(accountMapper::toDTO)
-                .switchIfEmpty(Flux.error(new AccountNotFoundException(customerId)));
+                .map(accountMapper::toDTO); // ← eliminado switchIfEmpty con error
     }
 
     @Transactional(readOnly = true)
@@ -100,11 +95,9 @@ public class AccountServiceImpl implements AccountService {
                                         .build()
                                 )
                 );
-
     }
 
     private String generateAccountNumber() {
-        return "ES91210000" + String.format("%012d", new
-                Random().nextLong(1_000_000_000_000L));
+        return "ES91210000" + String.format("%012d", new Random().nextLong(1_000_000_000_000L));
     }
 }

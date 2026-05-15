@@ -8,7 +8,9 @@ import com.novabank.account.dto.CustomerDTO;
 import com.novabank.account.exception.AccountNotFoundException;
 import com.novabank.account.exception.CustomerNotFoundException;
 import com.novabank.account.mapper.AccountMapper;
+import com.novabank.account.mapper.TransactionMapper;
 import com.novabank.account.repository.AccountRepository;
+import com.novabank.account.repository.TransactionRepository;
 import com.novabank.account.service.AccountServiceImpl;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Nested;
@@ -17,12 +19,13 @@ import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
+import reactor.core.publisher.Flux;
+import reactor.core.publisher.Mono;
+import reactor.test.StepVerifier;
 
 import java.math.BigDecimal;
-import java.util.List;
-import java.util.Optional;
 
-import static org.junit.jupiter.api.Assertions.*;
+import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.Mockito.*;
 
 @ExtendWith(MockitoExtension.class)
@@ -32,10 +35,16 @@ public class AccountServiceTest {
     private AccountRepository accountRepository;
 
     @Mock
-    private CustomerServiceClient customerServiceCustomer;
+    private TransactionRepository transactionRepository;
+
+    @Mock
+    private CustomerServiceClient customerServiceClient;
 
     @Mock
     private AccountMapper accountMapper;
+
+    @Mock
+    private TransactionMapper transactionMapper;
 
     @InjectMocks
     private AccountServiceImpl accountService;
@@ -85,36 +94,41 @@ public class AccountServiceTest {
 
         @Test
         void createAccount_customerNotFound_shouldThrowException() {
-            when(customerServiceCustomer.getCustomer(99L)).thenReturn(null);
+            when(customerServiceClient.getCustomer(99L))
+                    .thenReturn(Mono.error(new CustomerNotFoundException("Cliente no encontrado con ID: 99")));
 
-            assertThrows(CustomerNotFoundException.class, () ->
-                    accountService.createAccount(new CreateAccountRequest(99L))
-            );
+            StepVerifier.create(accountService.createAccount(new CreateAccountRequest(99L)))
+                    .expectError(CustomerNotFoundException.class)
+                    .verify();
+
             verify(accountRepository, never()).save(any());
         }
 
         @Test
         void createAccount_customerAlreadyHasAccount_shouldThrowException() {
-            when(customerServiceCustomer.getCustomer(customerId)).thenReturn(customerDTO);
-            when(accountRepository.existsByCustomerId(customerId)).thenReturn(true);
+            when(customerServiceClient.getCustomer(customerId)).thenReturn(Mono.just(customerDTO));
+            when(accountRepository.existsByCustomerId(customerId)).thenReturn(Mono.just(true));
 
-            assertThrows(IllegalArgumentException.class, () ->
-                    accountService.createAccount(createAccountRequest)
-            );
+            StepVerifier.create(accountService.createAccount(createAccountRequest))
+                    .expectError(IllegalArgumentException.class)
+                    .verify();
+
             verify(accountRepository, never()).save(any());
         }
 
         @Test
         void createAccount_validData_shouldSaveSuccessfully() {
-            when(customerServiceCustomer.getCustomer(customerId)).thenReturn(customerDTO);
-            when(accountRepository.existsByCustomerId(customerId)).thenReturn(false);
-            when(accountRepository.saveAndFlush(any())).thenReturn(account);
+            when(customerServiceClient.getCustomer(customerId)).thenReturn(Mono.just(customerDTO));
+            when(accountRepository.existsByCustomerId(customerId)).thenReturn(Mono.just(false));
+            when(accountMapper.toEntity(createAccountRequest)).thenReturn(account); // ← añadir
+            when(accountRepository.save(any())).thenReturn(Mono.just(account));
             when(accountMapper.toDTO(account)).thenReturn(accountDTO);
 
-            AccountDTO result = accountService.createAccount(createAccountRequest);
+            StepVerifier.create(accountService.createAccount(createAccountRequest))
+                    .expectNext(accountDTO)
+                    .verifyComplete();
 
-            assertEquals(accountDTO, result);
-            verify(accountRepository).saveAndFlush(any());
+            verify(accountRepository).save(any());
         }
     }
 
@@ -123,22 +137,22 @@ public class AccountServiceTest {
 
         @Test
         void findByCustomerId_shouldReturnList() {
-            when(accountRepository.findByCustomerId(customerId)).thenReturn(List.of(account));
+            when(accountRepository.findByCustomerId(customerId)).thenReturn(Flux.just(account));
             when(accountMapper.toDTO(account)).thenReturn(accountDTO);
 
-            List<AccountDTO> result = accountService.findByCustomerId(customerId);
+            StepVerifier.create(accountService.findByCustomerId(customerId))
+                    .expectNext(accountDTO)
+                    .verifyComplete();
 
-            assertEquals(1, result.size());
             verify(accountRepository).findByCustomerId(customerId);
         }
 
         @Test
         void findByCustomerId_shouldReturnEmptyList() {
-            when(accountRepository.findByCustomerId(customerId)).thenReturn(List.of());
+            when(accountRepository.findByCustomerId(customerId)).thenReturn(Flux.empty());
 
-            List<AccountDTO> result = accountService.findByCustomerId(customerId);
-
-            assertEquals(0, result.size());
+            StepVerifier.create(accountService.findByCustomerId(customerId))
+                    .verifyComplete();
         }
     }
 
@@ -147,22 +161,23 @@ public class AccountServiceTest {
 
         @Test
         void findByAccountNumber_existingAccount_shouldReturnAccount() {
-            when(accountRepository.findByAccountNumber(accountNumber)).thenReturn(Optional.of(account));
+            when(accountRepository.findByAccountNumber(accountNumber)).thenReturn(Mono.just(account));
             when(accountMapper.toDTO(account)).thenReturn(accountDTO);
 
-            AccountDTO result = accountService.findByAccountNumber(accountNumber);
+            StepVerifier.create(accountService.findByAccountNumber(accountNumber))
+                    .expectNext(accountDTO)
+                    .verifyComplete();
 
-            assertEquals(accountDTO, result);
             verify(accountRepository).findByAccountNumber(accountNumber);
         }
 
         @Test
         void findByAccountNumber_nonExistingAccount_shouldThrowException() {
-            when(accountRepository.findByAccountNumber(accountNumber)).thenReturn(Optional.empty());
+            when(accountRepository.findByAccountNumber(accountNumber)).thenReturn(Mono.empty());
 
-            assertThrows(AccountNotFoundException.class, () ->
-                    accountService.findByAccountNumber(accountNumber)
-            );
+            StepVerifier.create(accountService.findByAccountNumber(accountNumber))
+                    .expectError(AccountNotFoundException.class)
+                    .verify();
         }
     }
 
@@ -171,21 +186,23 @@ public class AccountServiceTest {
 
         @Test
         void findByCustomerIdWithTransactions_shouldReturnList() {
-            when(accountRepository.findByCustomerIdWithTransactions(customerId)).thenReturn(List.of(account));
-            when(accountMapper.toDTO(account)).thenReturn(accountDTO);
-
-            List<AccountDTO> result = accountService.findByCustomerIdWithTransactions(customerId);
-
-            assertEquals(1, result.size());
+            System.out.println("accountId: " + account.getAccountId()); // ← añade esto
+            when(accountRepository.findByCustomerId(customerId)).thenReturn(Flux.just(account));
+            when(transactionRepository.findByAccountId(any(Long.class))).thenReturn(Flux.empty());
+            StepVerifier.create(accountService.findByCustomerIdWithTransactions(customerId))
+                    .expectNextMatches(dto ->
+                            dto.getAccountNumber().equals(accountNumber) &&
+                                    dto.getTransactions().isEmpty()
+                    )
+                    .verifyComplete();
         }
 
         @Test
         void findByCustomerIdWithTransactions_shouldReturnEmptyList() {
-            when(accountRepository.findByCustomerIdWithTransactions(customerId)).thenReturn(List.of());
+            when(accountRepository.findByCustomerId(customerId)).thenReturn(Flux.empty());
 
-            List<AccountDTO> result = accountService.findByCustomerIdWithTransactions(customerId);
-
-            assertEquals(0, result.size());
+            StepVerifier.create(accountService.findByCustomerIdWithTransactions(customerId))
+                    .verifyComplete();
         }
     }
 }

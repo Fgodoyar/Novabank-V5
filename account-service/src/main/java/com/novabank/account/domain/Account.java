@@ -1,6 +1,5 @@
 package com.novabank.account.domain;
 
-import com.novabank.account.dto.TransactionDTO;
 import lombok.*;
 import org.springframework.data.annotation.CreatedDate;
 import org.springframework.data.annotation.Id;
@@ -9,17 +8,17 @@ import org.springframework.data.relational.core.mapping.Table;
 
 import java.math.BigDecimal;
 import java.time.LocalDateTime;
-import java.util.List;
 
 @Getter
 @Setter
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
-@ToString(exclude = {"transactions"})
+@ToString
 @EqualsAndHashCode(onlyExplicitlyIncluded = true)
 @Table(name = "accounts")
 public class Account {
+
     @Id
     @Column("account_id")
     private Long accountId;
@@ -39,7 +38,4 @@ public class Account {
 
     @Column("customer_id")
     private Long customerId;
-
-    private List<TransactionDTO> transactions;
-
 }

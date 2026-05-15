@@ -41,6 +41,7 @@ public class AuthController {
     }
 
     @PostMapping("/register")
+    @ResponseStatus(HttpStatus.CREATED)
     @Operation(summary = "Registrar un nuevo usuario")
     @ApiResponses({
             @ApiResponse(responseCode = "201", description = "Usuario registrado correctamente"),

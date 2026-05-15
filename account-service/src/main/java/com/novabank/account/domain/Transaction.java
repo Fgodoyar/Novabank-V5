@@ -14,7 +14,7 @@ import java.time.LocalDateTime;
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
-@ToString(exclude = "account")
+@ToString
 @EqualsAndHashCode(onlyExplicitlyIncluded = true)
 @Table(name = "transactions")
 public class Transaction {
