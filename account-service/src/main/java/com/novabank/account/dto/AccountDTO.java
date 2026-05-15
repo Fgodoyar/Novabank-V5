@@ -8,10 +8,10 @@ import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-import org.antlr.v4.runtime.misc.NotNull;
 
 import java.math.BigDecimal;
 import java.time.LocalDateTime;
+import java.util.List;
 
 @Data
 @AllArgsConstructor
@@ -35,9 +35,10 @@ public class AccountDTO {
     @Schema(description = "Fecha de creación de la cuenta", example = "2026-05-18")
     private LocalDateTime creationDate;
 
-    @NotNull
     @Schema(description = "ID del cliente vinculado a la cuenta")
     private Long customerId;
+
+    private List<TransactionDTO> transactions;
 
     public AccountDTO(String accountNumber, String accountHolder, BigDecimal balance, LocalDateTime creationDate, Long customerId) {
         this.accountNumber = accountNumber;

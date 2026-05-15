@@ -1,10 +1,14 @@
 package com.novabank.account.domain;
 
-import jakarta.persistence.*;
+import com.novabank.account.dto.TransactionDTO;
 import lombok.*;
+import org.springframework.data.annotation.CreatedDate;
+import org.springframework.data.annotation.Id;
+import org.springframework.data.relational.core.mapping.Column;
+import org.springframework.data.relational.core.mapping.Table;
+
 import java.math.BigDecimal;
 import java.time.LocalDateTime;
-import java.util.ArrayList;
 import java.util.List;
 
 @Getter
@@ -14,29 +18,28 @@ import java.util.List;
 @AllArgsConstructor
 @ToString(exclude = {"transactions"})
 @EqualsAndHashCode(onlyExplicitlyIncluded = true)
-@Entity
 @Table(name = "accounts")
 public class Account {
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "account_id")
+    @Column("account_id")
     private Long accountId;
 
-    @Column(name = "account_number")
+    @Column("account_number")
     private String accountNumber;
 
-    @Column(name = "account_holder")
+    @Column("account_holder")
     private String accountHolder;
 
-    @Column(name = "balance")
+    @Column("balance")
     private BigDecimal balance;
 
-    @Column(name = "creation_date")
+    @CreatedDate
+    @Column("creation_date")
     private LocalDateTime creationDate;
 
-    @Column(name = "customer_id", nullable = false)
+    @Column("customer_id")
     private Long customerId;
 
-    @OneToMany(mappedBy = "account", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
-    private List<Transaction> transactions = new ArrayList<>();
+    private List<TransactionDTO> transactions;
+
 }

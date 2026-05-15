@@ -11,7 +11,6 @@ import org.mapstruct.ReportingPolicy;
 @Mapper(unmappedTargetPolicy = ReportingPolicy.IGNORE, componentModel = MappingConstants.ComponentModel.SPRING)
 public interface TransactionMapper {
 
-    @Mapping(source = "account.accountId", target = "accountId")
     TransactionDTO toDTO(Transaction transaction);
     Transaction toEntity(TransactionDTO transactionDTO);
 }

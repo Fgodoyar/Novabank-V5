@@ -1,7 +1,10 @@
 package com.novabank.account.domain;
 
-import jakarta.persistence.*;
 import lombok.*;
+import org.springframework.data.annotation.CreatedDate;
+import org.springframework.data.annotation.Id;
+import org.springframework.data.relational.core.mapping.Column;
+import org.springframework.data.relational.core.mapping.Table;
 
 import java.math.BigDecimal;
 import java.time.LocalDateTime;
@@ -13,28 +16,26 @@ import java.time.LocalDateTime;
 @AllArgsConstructor
 @ToString(exclude = "account")
 @EqualsAndHashCode(onlyExplicitlyIncluded = true)
-@Entity
 @Table(name = "transactions")
 public class Transaction {
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "transaction_id")
+    @Column("transaction_id")
     private Long transactionId;
 
-    @Column(name = "transaction_type")
+    @Column("transaction_type")
     private String transactionType;
 
-    @Column(name = "amount")
+    @Column("amount")
     private BigDecimal amount;
 
-    @Column(name = "description")
+    @Column("description")
     private String description;
 
-    @Column(name = "creation_date")
-    private LocalDateTime creationDate;
+    @Column("account_id")
+    private Long accountId;
 
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "account_id")
-    private Account account;
+    @CreatedDate
+    @Column("creation_date")
+    private LocalDateTime creationDate;
 
 }

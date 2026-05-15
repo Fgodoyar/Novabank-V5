@@ -1,9 +1,9 @@
 package com.novabank.account.exception;
 
 public class AccountNotFoundException extends RuntimeException {
-    private final Integer accountId;
+    private final Long accountId;
 
-    public AccountNotFoundException(Integer id) {
+    public AccountNotFoundException(Long id) {
         super("Cuenta no encontrado con ID: " + id);
         this.accountId = id;
     }
@@ -13,7 +13,7 @@ public class AccountNotFoundException extends RuntimeException {
         this.accountId = null;
     }
 
-    public Integer getAccountId() {
+    public Long getAccountId() {
         return accountId;
     }
 }
