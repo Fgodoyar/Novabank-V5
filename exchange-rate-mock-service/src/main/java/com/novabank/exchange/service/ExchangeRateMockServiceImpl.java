@@ -6,13 +6,14 @@ import org.springframework.stereotype.Service;
 import reactor.core.publisher.Mono;
 
 import java.math.BigDecimal;
-import java.time.LocalDateTime;
+import java.time.Instant;
 import java.util.Map;
 
 @Service
 public class ExchangeRateMockServiceImpl implements ExchangeRateMockService {
 
     private static final Map<String, BigDecimal> RATES = Map.of(
+            "EUR", BigDecimal.ONE,
             "USD", new BigDecimal("0.92"),
             "GBP", new BigDecimal("1.17"),
             "JPY", new BigDecimal("0.0061"),
@@ -31,7 +32,7 @@ public class ExchangeRateMockServiceImpl implements ExchangeRateMockService {
                 from.toUpperCase(),
                 to.toUpperCase(),
                 RATES.get(key),
-                LocalDateTime.now()
+                Instant.now()
         ));
     }
 }

@@ -6,7 +6,7 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import java.math.BigDecimal;
-import java.time.LocalDateTime;
+import java.time.Instant;
 
 @Builder
 @Data
@@ -16,5 +16,5 @@ public class ExchangeRateResponse {
     private String from;
     private String to;
     private BigDecimal rate;
-    private LocalDateTime date;
+    private Instant date;
 }

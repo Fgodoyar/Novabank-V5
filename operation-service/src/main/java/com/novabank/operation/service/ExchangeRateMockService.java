@@ -22,6 +22,10 @@ public class ExchangeRateMockService {
     }
 
     public Mono<BigDecimal> getRate(String from, String to) {
+        if (from.equalsIgnoreCase(to)) {
+            return Mono.just(BigDecimal.ONE);
+        }
+
         return webClient.get()
                 .uri(uri -> uri.path("/api/exchange-rate")
                         .queryParam("from", from)

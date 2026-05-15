@@ -1,5 +1,0 @@
-com\novabank\gateway\config\SecurityConfig.class
-com\novabank\gateway\config\GatewayConfig.class
-com\novabank\gateway\filter\AuthenticationFilter.class
-com\novabank\gateway\config\WebClientConfig.class
-com\novabank\gateway\GatewayApplication.class

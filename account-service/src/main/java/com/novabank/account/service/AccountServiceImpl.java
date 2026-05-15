@@ -35,17 +35,22 @@ public class AccountServiceImpl implements AccountService {
         return customerServiceClient.getCustomer(request.customerId())
                 .switchIfEmpty(Mono.error(new CustomerNotFoundException(
                         "Cliente no encontrado con ID: " + request.customerId())))
-                .flatMap(customer -> accountRepository.existsByCustomerId(request.customerId()))
-                .flatMap(exists -> {
-                    if (exists) {
-                        return Mono.error(new IllegalArgumentException(
-                                "El cliente ya tiene una cuenta registrada"));
-                    }
-                    Account account = accountMapper.toEntity(request);
-                    account.setAccountNumber(generateAccountNumber());
-                    account.setBalance(BigDecimal.ZERO);
-                    return accountRepository.save(account); // ← misma instancia
-                })
+                .flatMap(customer -> accountRepository.existsByCustomerId(request.customerId())
+                        .flatMap(exists -> {
+                            if (exists) {
+                                return Mono.error(new IllegalArgumentException(
+                                        "El cliente ya tiene una cuenta registrada"));
+                            }
+                            Account account = Account.builder()
+                                    .accountNumber(generateAccountNumber())
+                                    .accountHolder(customer.customerName() + " " + customer.lastName())
+                                    .balance(BigDecimal.ZERO)
+                                    .customerId(request.customerId())
+                                    .build();
+
+                            return accountRepository.save(account);
+                        })
+                )
                 .map(accountMapper::toDTO);
     }
 

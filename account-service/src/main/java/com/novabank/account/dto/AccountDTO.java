@@ -1,6 +1,7 @@
 package com.novabank.account.dto;
 
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import io.swagger.v3.oas.annotations.media.Schema;
 import jakarta.validation.constraints.PositiveOrZero;
 import jakarta.validation.constraints.Size;
@@ -38,6 +39,7 @@ public class AccountDTO {
     @Schema(description = "ID del cliente vinculado a la cuenta")
     private Long customerId;
 
+    @JsonIgnore
     private List<TransactionDTO> transactions;
 
     public AccountDTO(String accountNumber, String accountHolder, BigDecimal balance, LocalDateTime creationDate, Long customerId) {

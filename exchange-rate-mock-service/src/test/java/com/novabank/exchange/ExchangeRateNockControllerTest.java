@@ -15,6 +15,7 @@ import org.springframework.test.web.reactive.server.WebTestClient;
 import reactor.core.publisher.Mono;
 
 import java.math.BigDecimal;
+import java.time.Instant;
 import java.time.LocalDateTime;
 
 import static org.assertj.core.api.Assertions.assertThat;
@@ -34,7 +35,7 @@ public class ExchangeRateNockControllerTest {
     @Test
     void getRate_whenCurrencyExists_shouldReturn200(){
         when(exchangeRateMockService.getExchangeRate("USD", "EUR"))
-                .thenReturn(Mono.just(new ExchangeRateResponse("USD", "EUR", new BigDecimal("0.92"), LocalDateTime.now())));
+                .thenReturn(Mono.just(new ExchangeRateResponse("USD", "EUR", new BigDecimal("0.92"), Instant.now())));
 
         webTestClient.get()
                 .uri("/api/exchange-rate?from=USD&to=EUR")

@@ -22,8 +22,8 @@ public class ExchangeRateMockServiceTest {
                 .expectNextMatches(exchangeRateResponse ->
                         exchangeRateResponse.getFrom().equals("USD") &&
                                 exchangeRateResponse.getTo().equals("EUR") &&
-                        exchangeRateResponse.getRate().compareTo(new BigDecimal("0.92")) == 0 &&
-                        exchangeRateResponse.getDate() != null)
+                                exchangeRateResponse.getRate().compareTo(new BigDecimal("0.917431")) == 0 &&
+                                exchangeRateResponse.getDate() != null)
                 .verifyComplete();
     }
 

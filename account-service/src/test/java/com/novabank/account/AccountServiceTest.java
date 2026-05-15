@@ -118,11 +118,10 @@ public class AccountServiceTest {
 
         @Test
         void createAccount_validData_shouldSaveSuccessfully() {
-            when(customerServiceClient.getCustomer(customerId)).thenReturn(Mono.just(customerDTO));
-            when(accountRepository.existsByCustomerId(customerId)).thenReturn(Mono.just(false));
-            when(accountMapper.toEntity(createAccountRequest)).thenReturn(account); // ← añadir
+            when(customerServiceClient.getCustomer(anyLong())).thenReturn(Mono.just(customerDTO));
+            when(accountRepository.existsByCustomerId(anyLong())).thenReturn(Mono.just(false));
             when(accountRepository.save(any())).thenReturn(Mono.just(account));
-            when(accountMapper.toDTO(account)).thenReturn(accountDTO);
+            when(accountMapper.toDTO(any())).thenReturn(accountDTO);
 
             StepVerifier.create(accountService.createAccount(createAccountRequest))
                     .expectNext(accountDTO)

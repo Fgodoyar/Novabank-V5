@@ -4,7 +4,241 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="54ba782e-3a95-4627-938d-1c69b056fe8e" name="Changes" comment="" />
+    <list default="true" id="54ba782e-3a95-4627-938d-1c69b056fe8e" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/account-service/src/main/java/com/novabank/account/config/SecurityConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/account-service/src/main/java/com/novabank/account/config/SecurityConfig.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/account-service/src/main/java/com/novabank/account/dto/AccountDTO.java" beforeDir="false" afterPath="$PROJECT_DIR$/account-service/src/main/java/com/novabank/account/dto/AccountDTO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/account-service/src/main/java/com/novabank/account/service/AccountServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/account-service/src/main/java/com/novabank/account/service/AccountServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/account-service/src/test/java/com/novabank/account/AccountServiceTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/account-service/src/test/java/com/novabank/account/AccountServiceTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/account-service/target/classes/com/novabank/account/config/SecurityConfig.class" beforeDir="false" afterPath="$PROJECT_DIR$/account-service/target/classes/com/novabank/account/config/SecurityConfig.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/account-service/target/classes/com/novabank/account/dto/AccountDTO$AccountDTOBuilder.class" beforeDir="false" afterPath="$PROJECT_DIR$/account-service/target/classes/com/novabank/account/dto/AccountDTO$AccountDTOBuilder.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/account-service/target/classes/com/novabank/account/dto/AccountDTO.class" beforeDir="false" afterPath="$PROJECT_DIR$/account-service/target/classes/com/novabank/account/dto/AccountDTO.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/account-service/target/classes/com/novabank/account/service/AccountServiceImpl.class" beforeDir="false" afterPath="$PROJECT_DIR$/account-service/target/classes/com/novabank/account/service/AccountServiceImpl.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/account-service/target/generated-sources/annotations/com/novabank/account/mapper/AccountMapperImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/account-service/target/generated-sources/annotations/com/novabank/account/mapper/AccountMapperImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/account-service/target/generated-sources/annotations/com/novabank/account/mapper/TransactionMapperImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/account-service/target/generated-sources/annotations/com/novabank/account/mapper/TransactionMapperImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/account-service/target/maven-status/maven-compiler-plugin/compile/default-compile/createdFiles.lst" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/account-service/target/maven-status/maven-compiler-plugin/compile/default-compile/inputFiles.lst" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/account-service/target/maven-status/maven-compiler-plugin/testCompile/default-testCompile/createdFiles.lst" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/account-service/target/maven-status/maven-compiler-plugin/testCompile/default-testCompile/inputFiles.lst" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/account-service/target/surefire-reports/TEST-com.novabank.account.AccountControllerTest$CreateAccountTest.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/account-service/target/surefire-reports/TEST-com.novabank.account.AccountControllerTest$FindByAccountNumberTest.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/account-service/target/surefire-reports/TEST-com.novabank.account.AccountControllerTest$FindByCustomerIdTest.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/account-service/target/surefire-reports/TEST-com.novabank.account.AccountControllerTest$FindByCustomerIdWithTransactionsTest.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/account-service/target/surefire-reports/TEST-com.novabank.account.AccountControllerTest.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/account-service/target/surefire-reports/TEST-com.novabank.account.AccountRepositoryTest$ExistsByCustomerIdTest.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/account-service/target/surefire-reports/TEST-com.novabank.account.AccountRepositoryTest$FindByAccountNumberTest.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/account-service/target/surefire-reports/TEST-com.novabank.account.AccountRepositoryTest$FindByCustomerIdTest.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/account-service/target/surefire-reports/TEST-com.novabank.account.AccountRepositoryTest$FindByCustomerIdWithTransactionsTest.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/account-service/target/surefire-reports/TEST-com.novabank.account.AccountRepositoryTest.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/account-service/target/surefire-reports/TEST-com.novabank.account.AccountServiceTest$CreateAccountTest.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/account-service/target/surefire-reports/TEST-com.novabank.account.AccountServiceTest$FindByAccountNumberTest.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/account-service/target/surefire-reports/TEST-com.novabank.account.AccountServiceTest$FindByCustomerIdTest.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/account-service/target/surefire-reports/TEST-com.novabank.account.AccountServiceTest$FindByCustomerIdWithTransactionsTest.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/account-service/target/surefire-reports/TEST-com.novabank.account.AccountServiceTest.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/account-service/target/surefire-reports/com.novabank.account.AccountControllerTest$CreateAccountTest.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/account-service/target/surefire-reports/com.novabank.account.AccountControllerTest$FindByAccountNumberTest.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/account-service/target/surefire-reports/com.novabank.account.AccountControllerTest$FindByCustomerIdTest.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/account-service/target/surefire-reports/com.novabank.account.AccountControllerTest$FindByCustomerIdWithTransactionsTest.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/account-service/target/surefire-reports/com.novabank.account.AccountControllerTest.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/account-service/target/surefire-reports/com.novabank.account.AccountRepositoryTest$ExistsByCustomerIdTest.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/account-service/target/surefire-reports/com.novabank.account.AccountRepositoryTest$FindByAccountNumberTest.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/account-service/target/surefire-reports/com.novabank.account.AccountRepositoryTest$FindByCustomerIdTest.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/account-service/target/surefire-reports/com.novabank.account.AccountRepositoryTest$FindByCustomerIdWithTransactionsTest.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/account-service/target/surefire-reports/com.novabank.account.AccountRepositoryTest.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/account-service/target/surefire-reports/com.novabank.account.AccountServiceTest$CreateAccountTest.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/account-service/target/surefire-reports/com.novabank.account.AccountServiceTest$FindByAccountNumberTest.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/account-service/target/surefire-reports/com.novabank.account.AccountServiceTest$FindByCustomerIdTest.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/account-service/target/surefire-reports/com.novabank.account.AccountServiceTest$FindByCustomerIdWithTransactionsTest.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/account-service/target/surefire-reports/com.novabank.account.AccountServiceTest.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/account-service/target/test-classes/com/novabank/account/AccountControllerTest$CreateAccountTest.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/account-service/target/test-classes/com/novabank/account/AccountControllerTest$FindByAccountNumberTest.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/account-service/target/test-classes/com/novabank/account/AccountControllerTest$FindByCustomerIdTest.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/account-service/target/test-classes/com/novabank/account/AccountControllerTest$FindByCustomerIdWithTransactionsTest.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/account-service/target/test-classes/com/novabank/account/AccountControllerTest.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/account-service/target/test-classes/com/novabank/account/AccountRepositoryTest$ExistsByCustomerIdTest.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/account-service/target/test-classes/com/novabank/account/AccountRepositoryTest$FindByAccountNumberTest.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/account-service/target/test-classes/com/novabank/account/AccountRepositoryTest$FindByCustomerIdTest.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/account-service/target/test-classes/com/novabank/account/AccountRepositoryTest$FindByCustomerIdWithTransactionsTest.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/account-service/target/test-classes/com/novabank/account/AccountRepositoryTest.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/account-service/target/test-classes/com/novabank/account/AccountServiceTest$CreateAccountTest.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/account-service/target/test-classes/com/novabank/account/AccountServiceTest$FindByAccountNumberTest.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/account-service/target/test-classes/com/novabank/account/AccountServiceTest$FindByCustomerIdTest.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/account-service/target/test-classes/com/novabank/account/AccountServiceTest$FindByCustomerIdWithTransactionsTest.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/account-service/target/test-classes/com/novabank/account/AccountServiceTest.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/api-gateway/src/main/java/com/novabank/gateway/filter/AuthenticationFilter.java" beforeDir="false" afterPath="$PROJECT_DIR$/api-gateway/src/main/java/com/novabank/gateway/filter/AuthenticationFilter.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/api-gateway/target/classes/com/novabank/gateway/filter/AuthenticationFilter.class" beforeDir="false" afterPath="$PROJECT_DIR$/api-gateway/target/classes/com/novabank/gateway/filter/AuthenticationFilter.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/api-gateway/target/maven-status/maven-compiler-plugin/compile/default-compile/createdFiles.lst" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/api-gateway/target/maven-status/maven-compiler-plugin/compile/default-compile/inputFiles.lst" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/auth-server/target/generated-sources/annotations/com/novabank/auth/mapper/UserMapperImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/auth-server/target/generated-sources/annotations/com/novabank/auth/mapper/UserMapperImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/auth-server/target/maven-status/maven-compiler-plugin/compile/default-compile/createdFiles.lst" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/auth-server/target/maven-status/maven-compiler-plugin/compile/default-compile/inputFiles.lst" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/auth-server/target/maven-status/maven-compiler-plugin/testCompile/default-testCompile/createdFiles.lst" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/auth-server/target/maven-status/maven-compiler-plugin/testCompile/default-testCompile/inputFiles.lst" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/auth-server/target/surefire-reports/TEST-com.novabank.auth.AuthControllerTest$LoginTest.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/auth-server/target/surefire-reports/TEST-com.novabank.auth.AuthControllerTest$RegisterTest.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/auth-server/target/surefire-reports/TEST-com.novabank.auth.AuthControllerTest.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/auth-server/target/surefire-reports/TEST-com.novabank.auth.JwtServiceTest$ExtractUsernameTest.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/auth-server/target/surefire-reports/TEST-com.novabank.auth.JwtServiceTest$GenerateTokenTest.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/auth-server/target/surefire-reports/TEST-com.novabank.auth.JwtServiceTest$GetExpirationTest.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/auth-server/target/surefire-reports/TEST-com.novabank.auth.JwtServiceTest$IsTokenValidTest.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/auth-server/target/surefire-reports/TEST-com.novabank.auth.JwtServiceTest$ReactiveMethodsTest.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/auth-server/target/surefire-reports/TEST-com.novabank.auth.JwtServiceTest.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/auth-server/target/surefire-reports/com.novabank.auth.AuthControllerTest$LoginTest.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/auth-server/target/surefire-reports/com.novabank.auth.AuthControllerTest$RegisterTest.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/auth-server/target/surefire-reports/com.novabank.auth.AuthControllerTest.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/auth-server/target/surefire-reports/com.novabank.auth.JwtServiceTest$ExtractUsernameTest.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/auth-server/target/surefire-reports/com.novabank.auth.JwtServiceTest$GenerateTokenTest.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/auth-server/target/surefire-reports/com.novabank.auth.JwtServiceTest$GetExpirationTest.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/auth-server/target/surefire-reports/com.novabank.auth.JwtServiceTest$IsTokenValidTest.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/auth-server/target/surefire-reports/com.novabank.auth.JwtServiceTest$ReactiveMethodsTest.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/auth-server/target/surefire-reports/com.novabank.auth.JwtServiceTest.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/auth-server/target/test-classes/com/novabank/auth/AuthControllerTest$LoginTest.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/auth-server/target/test-classes/com/novabank/auth/AuthControllerTest$RegisterTest.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/auth-server/target/test-classes/com/novabank/auth/AuthControllerTest.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/auth-server/target/test-classes/com/novabank/auth/JwtServiceTest$ExtractUsernameTest.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/auth-server/target/test-classes/com/novabank/auth/JwtServiceTest$GenerateTokenTest.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/auth-server/target/test-classes/com/novabank/auth/JwtServiceTest$GetExpirationTest.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/auth-server/target/test-classes/com/novabank/auth/JwtServiceTest$IsTokenValidTest.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/auth-server/target/test-classes/com/novabank/auth/JwtServiceTest$ReactiveMethodsTest.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/auth-server/target/test-classes/com/novabank/auth/JwtServiceTest.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/config-server/target/maven-status/maven-compiler-plugin/compile/default-compile/createdFiles.lst" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/config-server/target/maven-status/maven-compiler-plugin/compile/default-compile/inputFiles.lst" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/customer-service/src/main/java/com/novabank/customer/config/SecurityConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/customer-service/src/main/java/com/novabank/customer/config/SecurityConfig.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/customer-service/target/classes/com/novabank/customer/config/SecurityConfig.class" beforeDir="false" afterPath="$PROJECT_DIR$/customer-service/target/classes/com/novabank/customer/config/SecurityConfig.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/customer-service/target/generated-sources/annotations/com/novabank/customer/mapper/CustomerMapperImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/customer-service/target/generated-sources/annotations/com/novabank/customer/mapper/CustomerMapperImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/customer-service/target/maven-status/maven-compiler-plugin/compile/default-compile/createdFiles.lst" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/customer-service/target/maven-status/maven-compiler-plugin/compile/default-compile/inputFiles.lst" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/customer-service/target/maven-status/maven-compiler-plugin/testCompile/default-testCompile/createdFiles.lst" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/customer-service/target/maven-status/maven-compiler-plugin/testCompile/default-testCompile/inputFiles.lst" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/customer-service/target/surefire-reports/TEST-com.novabank.customer.CustomerControllerTest$CreateCustomerTest.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/customer-service/target/surefire-reports/TEST-com.novabank.customer.CustomerControllerTest$GetCustomerByDniTest.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/customer-service/target/surefire-reports/TEST-com.novabank.customer.CustomerControllerTest$GetCustomerByIdTest.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/customer-service/target/surefire-reports/TEST-com.novabank.customer.CustomerControllerTest$ListCustomersTest.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/customer-service/target/surefire-reports/TEST-com.novabank.customer.CustomerControllerTest.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/customer-service/target/surefire-reports/TEST-com.novabank.customer.CustomerRepositoryTest$ExistsByDniTest.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/customer-service/target/surefire-reports/TEST-com.novabank.customer.CustomerRepositoryTest$ExistsByEmailTest.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/customer-service/target/surefire-reports/TEST-com.novabank.customer.CustomerRepositoryTest$ExistsByPhoneNumberTest.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/customer-service/target/surefire-reports/TEST-com.novabank.customer.CustomerRepositoryTest$FindByDniTest.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/customer-service/target/surefire-reports/TEST-com.novabank.customer.CustomerRepositoryTest$SaveTest.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/customer-service/target/surefire-reports/TEST-com.novabank.customer.CustomerRepositoryTest.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/customer-service/target/surefire-reports/TEST-com.novabank.customer.CustomerServiceTest$CreateCustomerTest.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/customer-service/target/surefire-reports/TEST-com.novabank.customer.CustomerServiceTest$FindByDniTest.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/customer-service/target/surefire-reports/TEST-com.novabank.customer.CustomerServiceTest$FindByIdTest.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/customer-service/target/surefire-reports/TEST-com.novabank.customer.CustomerServiceTest$ListAllTest.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/customer-service/target/surefire-reports/TEST-com.novabank.customer.CustomerServiceTest.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/customer-service/target/surefire-reports/com.novabank.customer.CustomerControllerTest$CreateCustomerTest.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/customer-service/target/surefire-reports/com.novabank.customer.CustomerControllerTest$GetCustomerByDniTest.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/customer-service/target/surefire-reports/com.novabank.customer.CustomerControllerTest$GetCustomerByIdTest.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/customer-service/target/surefire-reports/com.novabank.customer.CustomerControllerTest$ListCustomersTest.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/customer-service/target/surefire-reports/com.novabank.customer.CustomerControllerTest.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/customer-service/target/surefire-reports/com.novabank.customer.CustomerRepositoryTest$ExistsByDniTest.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/customer-service/target/surefire-reports/com.novabank.customer.CustomerRepositoryTest$ExistsByEmailTest.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/customer-service/target/surefire-reports/com.novabank.customer.CustomerRepositoryTest$ExistsByPhoneNumberTest.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/customer-service/target/surefire-reports/com.novabank.customer.CustomerRepositoryTest$FindByDniTest.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/customer-service/target/surefire-reports/com.novabank.customer.CustomerRepositoryTest$SaveTest.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/customer-service/target/surefire-reports/com.novabank.customer.CustomerRepositoryTest.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/customer-service/target/surefire-reports/com.novabank.customer.CustomerServiceTest$CreateCustomerTest.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/customer-service/target/surefire-reports/com.novabank.customer.CustomerServiceTest$FindByDniTest.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/customer-service/target/surefire-reports/com.novabank.customer.CustomerServiceTest$FindByIdTest.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/customer-service/target/surefire-reports/com.novabank.customer.CustomerServiceTest$ListAllTest.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/customer-service/target/surefire-reports/com.novabank.customer.CustomerServiceTest.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/customer-service/target/test-classes/com/novabank/customer/CustomerControllerTest$CreateCustomerTest.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/customer-service/target/test-classes/com/novabank/customer/CustomerControllerTest$GetCustomerByDniTest.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/customer-service/target/test-classes/com/novabank/customer/CustomerControllerTest$GetCustomerByIdTest.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/customer-service/target/test-classes/com/novabank/customer/CustomerControllerTest$ListCustomersTest.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/customer-service/target/test-classes/com/novabank/customer/CustomerControllerTest.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/customer-service/target/test-classes/com/novabank/customer/CustomerRepositoryTest$ExistsByDniTest.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/customer-service/target/test-classes/com/novabank/customer/CustomerRepositoryTest$ExistsByEmailTest.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/customer-service/target/test-classes/com/novabank/customer/CustomerRepositoryTest$ExistsByPhoneNumberTest.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/customer-service/target/test-classes/com/novabank/customer/CustomerRepositoryTest$FindByDniTest.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/customer-service/target/test-classes/com/novabank/customer/CustomerRepositoryTest$SaveTest.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/customer-service/target/test-classes/com/novabank/customer/CustomerRepositoryTest.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/customer-service/target/test-classes/com/novabank/customer/CustomerServiceTest$CreateCustomerTest.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/customer-service/target/test-classes/com/novabank/customer/CustomerServiceTest$FindByDniTest.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/customer-service/target/test-classes/com/novabank/customer/CustomerServiceTest$FindByIdTest.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/customer-service/target/test-classes/com/novabank/customer/CustomerServiceTest$ListAllTest.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/customer-service/target/test-classes/com/novabank/customer/CustomerServiceTest.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/eureka-server/target/eureka-server-1.0.0.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/eureka-server/target/eureka-server-1.0.0.jar.original" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/eureka-server/target/maven-archiver/pom.properties" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/eureka-server/target/maven-status/maven-compiler-plugin/compile/default-compile/createdFiles.lst" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/eureka-server/target/maven-status/maven-compiler-plugin/compile/default-compile/inputFiles.lst" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/exchange-rate-mock-service/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/exchange-rate-mock-service/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/exchange-rate-mock-service/src/main/java/com/novabank/exchange/dto/ExchangeRateResponse.java" beforeDir="false" afterPath="$PROJECT_DIR$/exchange-rate-mock-service/src/main/java/com/novabank/exchange/dto/ExchangeRateResponse.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/exchange-rate-mock-service/src/main/java/com/novabank/exchange/service/ExchangeRateMockServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/exchange-rate-mock-service/src/main/java/com/novabank/exchange/service/ExchangeRateMockServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/exchange-rate-mock-service/src/test/java/com/novabank/exchange/ExchangeRateMockServiceTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/exchange-rate-mock-service/src/test/java/com/novabank/exchange/ExchangeRateMockServiceTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/exchange-rate-mock-service/src/test/java/com/novabank/exchange/ExchangeRateNockControllerTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/exchange-rate-mock-service/src/test/java/com/novabank/exchange/ExchangeRateNockControllerTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/exchange-rate-mock-service/target/classes/com/novabank/exchange/dto/ExchangeRateResponse$ExchangeRateResponseBuilder.class" beforeDir="false" afterPath="$PROJECT_DIR$/exchange-rate-mock-service/target/classes/com/novabank/exchange/dto/ExchangeRateResponse$ExchangeRateResponseBuilder.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/exchange-rate-mock-service/target/classes/com/novabank/exchange/dto/ExchangeRateResponse.class" beforeDir="false" afterPath="$PROJECT_DIR$/exchange-rate-mock-service/target/classes/com/novabank/exchange/dto/ExchangeRateResponse.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/exchange-rate-mock-service/target/classes/com/novabank/exchange/service/ExchangeRateMockServiceImpl.class" beforeDir="false" afterPath="$PROJECT_DIR$/exchange-rate-mock-service/target/classes/com/novabank/exchange/service/ExchangeRateMockServiceImpl.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/exchange-rate-mock-service/target/maven-status/maven-compiler-plugin/compile/default-compile/createdFiles.lst" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/exchange-rate-mock-service/target/maven-status/maven-compiler-plugin/compile/default-compile/inputFiles.lst" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/exchange-rate-mock-service/target/maven-status/maven-compiler-plugin/testCompile/default-testCompile/createdFiles.lst" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/exchange-rate-mock-service/target/maven-status/maven-compiler-plugin/testCompile/default-testCompile/inputFiles.lst" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/exchange-rate-mock-service/target/surefire-reports/TEST-com.novabank.exchange.ExchangeRateMockServiceTest.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/exchange-rate-mock-service/target/surefire-reports/TEST-com.novabank.exchange.ExchangeRateNockControllerTest.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/exchange-rate-mock-service/target/surefire-reports/com.novabank.exchange.ExchangeRateMockServiceTest.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/exchange-rate-mock-service/target/surefire-reports/com.novabank.exchange.ExchangeRateNockControllerTest.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/exchange-rate-mock-service/target/test-classes/com/novabank/exchange/ExchangeRateMockServiceTest.class" beforeDir="false" afterPath="$PROJECT_DIR$/exchange-rate-mock-service/target/test-classes/com/novabank/exchange/ExchangeRateMockServiceTest.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/exchange-rate-mock-service/target/test-classes/com/novabank/exchange/ExchangeRateNockControllerTest.class" beforeDir="false" afterPath="$PROJECT_DIR$/exchange-rate-mock-service/target/test-classes/com/novabank/exchange/ExchangeRateNockControllerTest.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/operation-service/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/operation-service/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/operation-service/src/main/java/com/novabank/operation/config/SecurityConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/operation-service/src/main/java/com/novabank/operation/config/SecurityConfig.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/operation-service/src/main/java/com/novabank/operation/dto/ExchangeRateResponse.java" beforeDir="false" afterPath="$PROJECT_DIR$/operation-service/src/main/java/com/novabank/operation/dto/ExchangeRateResponse.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/operation-service/src/main/java/com/novabank/operation/service/ExchangeRateMockService.java" beforeDir="false" afterPath="$PROJECT_DIR$/operation-service/src/main/java/com/novabank/operation/service/ExchangeRateMockService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/operation-service/target/classes/com/novabank/operation/OperationServiceApplication.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/operation-service/target/classes/com/novabank/operation/config/SecurityConfig.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/operation-service/target/classes/com/novabank/operation/config/WebClientConfig.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/operation-service/target/classes/com/novabank/operation/controller/OperationController.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/operation-service/target/classes/com/novabank/operation/customer/AccountServiceClient.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/operation-service/target/classes/com/novabank/operation/customer/CustomerServiceClient.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/operation-service/target/classes/com/novabank/operation/dto/AccountDTO$AccountDTOBuilder.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/operation-service/target/classes/com/novabank/operation/dto/AccountDTO.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/operation-service/target/classes/com/novabank/operation/dto/CreateOperationRequest.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/operation-service/target/classes/com/novabank/operation/dto/CreateTransactionRequest.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/operation-service/target/classes/com/novabank/operation/dto/CreateTransferRequest.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/operation-service/target/classes/com/novabank/operation/dto/CustomerDTO.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/operation-service/target/classes/com/novabank/operation/dto/ExchangeRateResponse$ExchangeRateResponseBuilder.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/operation-service/target/classes/com/novabank/operation/dto/ExchangeRateResponse.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/operation-service/target/classes/com/novabank/operation/dto/TransactionDTO$TransactionDTOBuilder.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/operation-service/target/classes/com/novabank/operation/dto/TransactionDTO.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/operation-service/target/classes/com/novabank/operation/exception/AccountNotFoundException.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/operation-service/target/classes/com/novabank/operation/exception/CustomerNotFoundException.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/operation-service/target/classes/com/novabank/operation/exception/ExchangeRateUnavailableException.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/operation-service/target/classes/com/novabank/operation/exception/GlobalExceptionHandler.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/operation-service/target/classes/com/novabank/operation/exception/InsufficientBalanceException.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/operation-service/target/classes/com/novabank/operation/exception/UnsupportedCurrencyException.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/operation-service/target/classes/com/novabank/operation/service/ExchangeRateMockService.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/operation-service/target/classes/com/novabank/operation/service/OperationService.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/operation-service/target/classes/com/novabank/operation/service/OperationServiceImpl.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/operation-service/target/maven-status/maven-compiler-plugin/compile/default-compile/createdFiles.lst" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/operation-service/target/maven-status/maven-compiler-plugin/compile/default-compile/inputFiles.lst" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/operation-service/target/maven-status/maven-compiler-plugin/testCompile/default-testCompile/createdFiles.lst" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/operation-service/target/maven-status/maven-compiler-plugin/testCompile/default-testCompile/inputFiles.lst" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/operation-service/target/surefire-reports/TEST-com.novabank.operation.OperationControllerTest$DepositTest.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/operation-service/target/surefire-reports/TEST-com.novabank.operation.OperationControllerTest$TransferTest.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/operation-service/target/surefire-reports/TEST-com.novabank.operation.OperationControllerTest$WithdrawTest.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/operation-service/target/surefire-reports/TEST-com.novabank.operation.OperationControllerTest.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/operation-service/target/surefire-reports/TEST-com.novabank.operation.OperationServiceTest$DepositTest.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/operation-service/target/surefire-reports/TEST-com.novabank.operation.OperationServiceTest$TransferTest.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/operation-service/target/surefire-reports/TEST-com.novabank.operation.OperationServiceTest$WithdrawTest.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/operation-service/target/surefire-reports/TEST-com.novabank.operation.OperationServiceTest.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/operation-service/target/surefire-reports/com.novabank.operation.OperationControllerTest$DepositTest.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/operation-service/target/surefire-reports/com.novabank.operation.OperationControllerTest$TransferTest.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/operation-service/target/surefire-reports/com.novabank.operation.OperationControllerTest$WithdrawTest.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/operation-service/target/surefire-reports/com.novabank.operation.OperationControllerTest.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/operation-service/target/surefire-reports/com.novabank.operation.OperationServiceTest$DepositTest.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/operation-service/target/surefire-reports/com.novabank.operation.OperationServiceTest$TransferTest.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/operation-service/target/surefire-reports/com.novabank.operation.OperationServiceTest$WithdrawTest.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/operation-service/target/surefire-reports/com.novabank.operation.OperationServiceTest.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/operation-service/target/test-classes/com/novabank/operation/OperationControllerTest$DepositTest.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/operation-service/target/test-classes/com/novabank/operation/OperationControllerTest$TransferTest.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/operation-service/target/test-classes/com/novabank/operation/OperationControllerTest$WithdrawTest.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/operation-service/target/test-classes/com/novabank/operation/OperationControllerTest.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/operation-service/target/test-classes/com/novabank/operation/OperationServiceTest$DepositTest.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/operation-service/target/test-classes/com/novabank/operation/OperationServiceTest$TransferTest.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/operation-service/target/test-classes/com/novabank/operation/OperationServiceTest$WithdrawTest.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/operation-service/target/test-classes/com/novabank/operation/OperationServiceTest.class" beforeDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -51,11 +285,17 @@
     "JUnit.CustomerControllerTest.executor": "Run",
     "JUnit.CustomerRepositoryTest.executor": "Run",
     "JUnit.CustomerServiceTest.executor": "Run",
+    "JUnit.ExchangeRateMockServiceTest.executor": "Run",
+    "JUnit.ExchangeRateNockControllerTest.executor": "Run",
     "JUnit.JwtServiceTest.executor": "Run",
     "JUnit.OperationControllerTest.executor": "Run",
     "JUnit.OperationServiceTest.executor": "Run",
+    "Maven.novabank-reactive [clean].executor": "Run",
+    "Maven.novabank-reactive [install].executor": "Run",
     "Maven.novabank-reactive [test].executor": "Run",
     "RunOnceActivity.ShowReadmeOnStart": "true",
+    "RunOnceActivity.TerminalTabsStorage.copyFrom.TerminalArrangementManager.252": "true",
+    "SHELLCHECK.PATH": "C:\\Users\\frang\\AppData\\Roaming\\JetBrains\\IntelliJIdea2025.3\\plugins\\Shell Script\\shellcheck.exe",
     "Spring Boot.AccountServiceApplication.executor": "Run",
     "Spring Boot.AuthServerApplication.executor": "Run",
     "Spring Boot.ConfigServerApplication.executor": "Run",
@@ -73,6 +313,9 @@
     <key name="CopyFile.RECENT_KEYS">
       <recent name="C:\Users\frang\IdeaProjects\Novabank-V5\novabank-reactive\eureka-server\src\main" />
       <recent name="C:\Users\frang\IdeaProjects\Novabank-V5\novabank-reactive\api-gateway" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\frang\IdeaProjects\Novabank-V5\novabank-reactive" />
     </key>
     <key name="CopyClassDialog.RECENTS_KEY">
       <recent name="com.novabank.operation.config" />
@@ -111,13 +354,6 @@
         <item itemvalue="JUnit.AccountServiceTest$FindByCustomerIdWithTransactionsTest.findByCustomerIdWithTransactions_shouldReturnList" />
       </list>
     </recent_temporary>
-  </component>
-  <component name="SharedIndexes">
-    <attachedChunks>
-      <set>
-        <option value="bundled-jdk-30f59d01ecdd-2fc7cc6b9a17-intellij.indexing.shared.core-IU-253.31033.145" />
-      </set>
-    </attachedChunks>
   </component>
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
