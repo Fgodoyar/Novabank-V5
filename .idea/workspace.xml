@@ -13,7 +13,6 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
-        <option value="Interface" />
         <option value="Exception" />
         <option value="Class" />
       </list>
@@ -44,24 +43,21 @@
   </component>
   <component name="PropertiesComponent"><![CDATA[{
   "keyToString": {
-    "JUnit.ExchangeRateMockServiceTest.executor": "Run",
-    "JUnit.ExchangeRateNockControllerTest.executor": "Run",
-    "Maven.exchange-rate-mock-service [clean].executor": "Run",
-    "Maven.exchange-rate-mock-service [install].executor": "Run",
-    "ModuleVcsDetector.initialDetectionPerformed": "true",
+    "JUnit.CustomerRepositoryTest.executor": "Run",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "RunOnceActivity.git.unshallow": "true",
-    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
-    "git-widget-placeholder": "develop",
+    "git-widget-placeholder": "1-customer-reactive",
     "kotlin-language-version-configured": "true",
-    "last_opened_file_path": "C:/Users/frang/IdeaProjects/Novabank-V5/novabank-reactive/config-server",
-    "onboarding.tips.debug.path": "C:/Users/frang/IdeaProjects/Novabank-V5/novabank-reactive/exchange-rate-mock-service/src/main/java/com/novabank/Main.java"
+    "last_opened_file_path": "C:/Users/frang/IdeaProjects/Novabank-V5/novabank-reactive/account-service"
   }
 }]]></component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\frang\IdeaProjects\Novabank-V5\novabank-reactive\account-service" />
       <recent name="C:\Users\frang\IdeaProjects\Novabank-V5\novabank-reactive\config-server" />
-      <recent name="C:\Users\frang\IdeaProjects\Novabank-V5\novabank-reactive\exchange-rate-mock-service\src\main\java\com\novabank\exchange\exception" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\frang\IdeaProjects\Novabank-V5\novabank-reactive\customer-service\src\test\java\com\novabank\customer" />
     </key>
   </component>
   <component name="RunManager">

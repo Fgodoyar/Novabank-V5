@@ -1,0 +1,14 @@
+package com.novabank.account.repository;
+
+import com.novabank.account.domain.Transaction;
+import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.stereotype.Repository;
+
+import java.time.LocalDateTime;
+import java.util.List;
+
+@Repository
+public interface TransactionRepository extends JpaRepository<Transaction, Long> {
+    List<Transaction> findByAccount_AccountId(Long account_id);
+    List<Transaction> findByAccount_AccountIdAndCreationDateBetweenOrderByCreationDateDesc(Long account_id, LocalDateTime startDate, LocalDateTime endDate);
+}
