@@ -2,12 +2,14 @@ package com.novabank.exchange.service;
 
 import com.novabank.exchange.dto.ExchangeRateResponse;
 import com.novabank.exchange.exception.UnsupportedCurrencyException;
+import org.springframework.stereotype.Service;
 import reactor.core.publisher.Mono;
 
 import java.math.BigDecimal;
 import java.time.LocalDateTime;
 import java.util.Map;
 
+@Service
 public class ExchangeRateMockServiceImpl implements ExchangeRateMockService {
 
     private static final Map<String, BigDecimal> RATES = Map.of(

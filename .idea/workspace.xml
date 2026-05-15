@@ -56,13 +56,17 @@
     "JUnit.OperationServiceTest.executor": "Run",
     "Maven.novabank-reactive [test].executor": "Run",
     "RunOnceActivity.ShowReadmeOnStart": "true",
+    "Spring Boot.AuthServerApplication.executor": "Run",
+    "Spring Boot.ConfigServerApplication.executor": "Run",
+    "Spring Boot.EurekaServerApplication.executor": "Run",
     "git-widget-placeholder": "develop",
     "kotlin-language-version-configured": "true",
-    "last_opened_file_path": "C:/Users/frang/IdeaProjects/Novabank-V5/novabank-reactive/api-gateway"
+    "last_opened_file_path": "C:/Users/frang/IdeaProjects/Novabank-V5/novabank-reactive/eureka-server/src/main"
   }
 }]]></component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\frang\IdeaProjects\Novabank-V5\novabank-reactive\eureka-server\src\main" />
       <recent name="C:\Users\frang\IdeaProjects\Novabank-V5\novabank-reactive\api-gateway" />
     </key>
   </component>
